@@ -43,9 +43,18 @@ sequenceDiagram
 
 ### Key features
 
-- Describe your key feature
-- Describe your key feature
-- Describe your key feature
+1. Check-Ins Unlock the Map  
+   _Users unlock new areas on the map by checking in at paddleboarding, swimming, or boating locations. Use tracking to store location data. Use mapping to display the different locations you've visited.
+2. Treasure Collection
+   _Every check in randomly rewards a treasure that counts as points towards a users total progress. Treasures could include a pearl, golden paddle, shells, or aquatic creatures.
+   _Treasures are saved to the users personal treasure inventory in the directory.
+3. Friends Leaderboard
+   _Users earn points for every check-in, unique check-ins, and treasures that they earn.
+   _Points are tracked and compared with friends' scores using a simple leaderboard. 
+4. Progress Tracker
+   _A visual progress bar tracks the users total amount of points that they've received from check-ins and treasures.
+   _The progress bar rewards badges for every 100 points earned. An example may be the Wilderness Explorer Badge or an Ocean Adventurer Badge.
+   _Every badge is a milestone.
 
 ### Technologies
 
