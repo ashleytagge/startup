@@ -36,18 +36,18 @@ Here is what a user might see when they check in at an outdoor location.
 
 ![Design image](check_in.jpeg)
 
-```mermaid
-sequenceDiagram
-    actor You
-    actor Website
-    You->>Website: Replace this with your design
-```
+The user and the users friends will get a notification when they check in at a location. The User's may look light the following:
+
+![Design image](collect_treasure.jpeg)
 
 ### Key features
 
+**PREFACE** - These features sound simple to me now but may be simplified even further in the next few weeks.
+
 1. Check-Ins Unlock the Map
 - Users unlock new areas on the map by checking in at paddleboarding, swimming, or boating locations. 
-- Use tracking to store location data. Use mapping to display the different locations you've visited.
+- Use tracking to store location data. 
+- Use mapping to display the different locations you've visited.
 2. Treasure Collection
 - Every check in randomly rewards a treasure that counts as points towards a users total progress.
 - Treasures could include a pearl, golden paddle, shells, or aquatic creatures.
