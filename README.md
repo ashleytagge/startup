@@ -18,23 +18,23 @@ Explore a virtual map that unlocks as you check in at real-world water locations
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] Proper use of Markdown
-- [ ] A concise and compelling elevator pitch
-- [ ] Description of key features
-- [ ] Description of how you will use each technology
-- [ ] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
+- [x] Proper use of Markdown
+- [x] A concise and compelling elevator pitch
+- [x] Description of key features
+- [x] Description of how you will use each technology
+- [x] One or more rough sketches of your application. Images must be embedded in this file using Markdown image references.
 
 ### Elevator pitch
 
-Image turning every paddleboarding, boating, or swimming adventure into an exciting outdoor quest with Aquaquest! Our app incentivizes real-world water activities by unlocking a vibrant virtual map as users explore their favorite spots, discover hidden treasures, and encounter rare aquatic creatures. With features like interactive leaderboards, personalized progress trackers, and real-time friend updates, AquaQuest fosters a vibrant community of water enthusiasts eager to compete and collaborate. Seamlessly blending engaging gameplay with practical tracking, AquaQuest makes every outing fun, motivates users to explore more, and helps them connect deeper with their aquatic passions. Join us in revolutionizing outdoor adventures and making every splash count!
+Imagine turning every paddleboarding, boating, or swimming adventure into an exciting outdoor quest with Aquaquest! Our app incentivizes real-world water activities by unlocking a vibrant virtual map as users explore their favorite spots, discover hidden treasures, and encounter rare aquatic creatures. With features like interactive leaderboards, personalized progress trackers, and real-time friend updates, AquaQuest fosters a vibrant community of water enthusiasts eager to compete and collaborate. Seamlessly blending engaging gameplay with practical tracking, AquaQuest makes every outing fun, motivates users to explore more, and helps them connect deeper with their aquatic passions. Join us in revolutionizing outdoor adventures and making every splash count!
 
 ### Design
 
-![Design image](login.png)
+![Design image](login.jpeg)
 
 Here is what a user might see when they check in at an outdoor location.
 
-![Design image](check_in.png)
+![Design image](check_in.jpeg)
 
 ```mermaid
 sequenceDiagram
@@ -45,18 +45,20 @@ sequenceDiagram
 
 ### Key features
 
-1. Check-Ins Unlock the Map  
-   _Users unlock new areas on the map by checking in at paddleboarding, swimming, or boating locations. Use tracking to store location data. Use mapping to display the different locations you've visited.
+1. Check-Ins Unlock the Map
+- Users unlock new areas on the map by checking in at paddleboarding, swimming, or boating locations. 
+- Use tracking to store location data. Use mapping to display the different locations you've visited.
 2. Treasure Collection
-   _Every check in randomly rewards a treasure that counts as points towards a users total progress. Treasures could include a pearl, golden paddle, shells, or aquatic creatures.
-   _Treasures are saved to the users personal treasure inventory in the directory.
+- Every check in randomly rewards a treasure that counts as points towards a users total progress.
+- Treasures could include a pearl, golden paddle, shells, or aquatic creatures.
+- Treasures are saved to the users personal treasure inventory in the directory.
 3. Friends Leaderboard
-   _Users earn points for every check-in, unique check-ins, and treasures that they earn.
-   _Points are tracked and compared with friends' scores using a simple leaderboard. 
+- Users earn points for every check-in, unique check-ins, and treasures that they earn.
+- Points are tracked and compared with friends' scores using a simple leaderboard. 
 4. Progress Tracker
-   _A visual progress bar tracks the users total amount of points that they've received from check-ins and treasures.
-   _The progress bar rewards badges for every 100 points earned. An example may be the Wilderness Explorer Badge or an Ocean Adventurer Badge.
-   _Every badge is a milestone.
+- A visual progress bar tracks the users total amount of points that they've received from check-ins and treasures.
+- The progress bar rewards badges for every 100 points earned. An example may be the Wilderness Explorer Badge or an Ocean Adventurer Badge.
+- Every badge is a milestone.
 
 ### Technologies
 
