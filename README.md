@@ -75,7 +75,15 @@ I am going to use the required technologies in the following ways.
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+- [x] **Server deployed and accessible with custom domain name** - [My server link](https://yourdomainnamehere.click).
+
+**AWS Notes**
+- my AWS Account ID is 762233738401
+- My IP address is 3.209.173.176
+- I created an elastic IP address. Do not forget to RELEASE it after the semester is over.
+- I am using a t2.nano instance.
+- Use this command line to shell into the server ssh -i ~/desktop/keys/ashspen815.pem ubuntu@3.209.173.176
+- Use this command line to access information in the server ls -l
 
 ## 🚀 HTML deliverable
 
