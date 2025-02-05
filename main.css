@@ -11,7 +11,7 @@ body {
   
   /* Navbar Styling */
   .navbar {
-    background-color: #0077b6 !important; /* Aqua blue */
+    background-color: #F6BF3F !important; 
     padding: 10px 20px;
   }
   
@@ -38,6 +38,18 @@ body {
     /*  Overwrite Bootstrap so the menu does not wrap */
     flex-direction: row !important;
     list-style: none;
+    gap: 15px;
+  }
+
+  .navbar-nav .nav-item {
+    padding: 0 10px; 
+  }
+
+  .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 10px 15px; 
   }
   
   main {
