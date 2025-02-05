@@ -2,10 +2,42 @@ body {
     display: flex;
     flex-direction: column;
     min-width: 375px;
+    margin: 0;
   }
   
   header {
     flex: 0 80px;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    background-color: #0077b6 !important; /* Aqua blue */
+    padding: 10px 20px;
+  }
+  
+  .navbar-brand {
+    padding-left: 0.3em;
+    border-bottom: solid rgb(182, 182, 182) thin;
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: 0.3s;
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #caf0f8 !important; /* Lighter blue */
+  }
+  
+  menu {
+    flex: 1;
+    display: flex;
+    /*  Overwrite Bootstrap so the menu does not wrap */
+    flex-direction: row !important;
+    list-style: none;
   }
   
   main {
@@ -14,31 +46,25 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+    text-align: center;
   }
   
   footer {
     flex: 0 30px;
-  }
-  
-  menu {
-    flex: 1;
-    display: flex;
-    /*  overwrite Bootstrap so the menu does not wrap */
-    flex-direction: row !important;
-    list-style: none;
-  }
-  
-  .navbar-brand {
-    padding-left: 0.3em;
-    border-bottom: solid rgb(182, 182, 182) thin;
-  }
-  
-  menu .nav-item {
-    padding: 0 0.3em;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
   }
   
   footer a {
-    float: right;
+    color: #0077b6;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
   }
   
   @media (max-height: 600px) {
