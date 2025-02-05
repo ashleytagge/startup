@@ -124,6 +124,9 @@ Simon HTML Short Cut: https://www.youtube.com/watch?v=zg7eDNRMnWA
 
 ## 🚀 CSS deliverable
 
+**PLEASE NOTE**
+- I have not been able to sync my vscode files to github all week. I have been getting an error saying, "warning: ignoring ref with broken name refs/heads/main 2". I FINALLY fixed it today (I honestly don't know how I did it either) and it rewrote all of my previous commitment descriptions as "Fixing branches so I can commit to github". I apologize that all of the commit notes are now extremley vague. My new commits will be descriptive and hopefully I don't have any more issues with github.
+
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [ ] **Header, footer, and main content body** - I did not complete this part of the deliverable.
