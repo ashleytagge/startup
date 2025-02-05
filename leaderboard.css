@@ -4,86 +4,108 @@ body {
     flex-direction: column;
     min-width: 375px;
     margin: 0;
-}
-
-#logo-section {
-    margin-top: -150px; 
-}
-
-#form-section {
-    margin-top: -110px;
+    height: 100vh; /* Ensure full height for scrolling */
 }
 
 header {
-    flex: 0 80px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000; /* Ensure navbar stays on top */
+    background-color: #F6BF3F;
 }
 
-#header-section {
-    margin-top: -130px; 
-    color: #F6BF3F;
-}
-
-/* Navbar Styling */
 .navbar {
-    background-color: #F6BF3F !important; 
+    background-color: #F6BF3F !important;
     padding: 10px 20px;
+    display: flex;
+    justify-content: space-between; /* Ensure the navbar items are spaced horizontally */
+    align-items: center;
 }
 
 .navbar-brand {
     text-decoration: none !important;
     padding-left: 0.3em;
-    border-bottom: solid rgb(182, 182, 182) thin;
     color: white !important;
     font-weight: bold;
 }
 
 .navbar-nav .nav-item {
-    padding: 0 10px; 
+    padding: 0 10px;
 }
 
 .navbar-nav .nav-link {
     color: white !important;
     font-weight: 500;
     transition: 0.3s;
-    padding: 10px 15px; 
+    padding: 10px 15px;
 }
 
 .navbar-nav .nav-link:hover {
     color: #FE9B05 !important;
 }
 
-/* Layout */
-menu {
-    flex: 1;
-    display: flex;
-    flex-direction: row !important;
-    list-style: none;
-    gap: 15px;
-}
-
 main {
-    flex: 1 calc(100vh - 110px);
+    flex: 1;
+    margin-top: 80px; /* Adds space to compensate for fixed navbar */
+    padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-around;
+    justify-content: flex-start; /* Adjust content to start from top */
     text-align: center;
+    overflow-y: auto; /* Make content scrollable */
+    height: 100%; /* Full height for main content */
 }
 
+h2 {
+    font-size: 24px;
+    color: #333;
+}
 
-/* Footer Styling */
+h4 {
+    font-size: 20px;
+    color: #555;
+}
+
+table {
+    width: 80%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+thead {
+    background-color: #f1f1f1;
+}
+
 footer {
     background-color: #f1f1f1;
     text-align: center;
     padding: 8px 0;
     font-size: 12px;
-    position: fixed;
-    bottom: 0;
+    position: relative;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; /* Prevent footer from overlapping content */
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #333;
 }
 
 /* Friend Section */
@@ -100,7 +122,7 @@ footer {
     border-radius: 20px;
     padding: 5px;
     border: 1px solid #ccc;
-    width: 120px; 
+    width: 120px;
 }
 
 #add-friend-section button {
@@ -109,8 +131,38 @@ footer {
     font-size: 10px;
 }
 
-footer p {
-    margin-top: 10px;
-    font-size: 10px;
+/* Styling for Leaderboard Friends List */
+#friends-list {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#friends-list h4 {
+    font-size: 18px;
+}
+
+#friends-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+#friends-list li {
+    font-size: 14px;
     color: #333;
+    margin-bottom: 5px;
+}
+
+#progress-bar {
+    width: 90%;
+    background-color: #f1f1f1;
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 10px 0;
+}
+
+#progress-bar span {
+    display: block;
+    width: 90%;
+    background-color: #FE9B05;
+    height: 10px;
 }
