@@ -4,42 +4,48 @@ body {
     flex-direction: column;
     min-width: 375px;
     margin: 0;
-    height: 100vh; /* Ensure full height for scrolling */
+}
+
+#logo-section {
+    margin-top: -150px; 
+}
+
+#form-section {
+    margin-top: -110px;
 }
 
 header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000; /* Ensure navbar stays on top */
-    background-color: #F6BF3F;
+    flex: 0 80px;
 }
 
+#header-section {
+    margin-top: -130px; 
+    color: #F6BF3F;
+}
+
+/* Navbar Styling */
 .navbar {
-    background-color: #F6BF3F !important;
+    background-color: #F6BF3F !important; 
     padding: 10px 20px;
-    display: flex;
-    justify-content: space-between; /* Ensure the navbar items are spaced horizontally */
-    align-items: center;
 }
 
 .navbar-brand {
     text-decoration: none !important;
     padding-left: 0.3em;
+    border-bottom: solid rgb(182, 182, 182) thin;
     color: white !important;
     font-weight: bold;
 }
 
 .navbar-nav .nav-item {
-    padding: 0 10px;
+    padding: 0 10px; 
 }
 
 .navbar-nav .nav-link {
     color: white !important;
     font-weight: 500;
     transition: 0.3s;
-    padding: 10px 15px;
+    padding: 10px 15px; 
 }
 
 .navbar-nav .nav-link:hover {
@@ -47,30 +53,38 @@ header {
 }
 
 main {
-    flex: 1;
-    margin-top: 80px; /* Adds space to compensate for fixed navbar */
-    padding: 20px;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start; /* Adjust content to start from top */
+    flex-direction: row;
+    justify-content: center; /* Center content horizontally */
+    align-items: flex-start; /* Align content to the top */
+    margin-top: 80px;
+    padding: 20px;
     text-align: center;
-    overflow-y: auto; /* Make content scrollable */
-    height: 100%; /* Full height for main content */
+    overflow-y: auto;
+    height: 100%;
+}
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+    gap: 15px;
 }
 
 h2 {
     font-size: 24px;
-    color: #333;
+    color: black;
 }
 
 h4 {
     font-size: 20px;
-    color: #555;
+    color: #F6BF3F;
+    padding-top: 10%;
 }
 
 table {
-    width: 80%;
+    width: 100%;
     margin: 20px 0;
     border-collapse: collapse;
 }
@@ -81,7 +95,7 @@ table, th, td {
 
 th, td {
     padding: 8px 12px;
-    text-align: left;
+    text-align: center;
 }
 
 thead {
@@ -108,14 +122,64 @@ footer p {
     color: #333;
 }
 
-/* Friend Section */
-#add-friend-section {
+content-container {
     display: flex;
+    justify-content: space between; /* Arrange content side by side */
+    width: 100%;
+}
+
+/* Styling for the leaderboard section */
+.leaderboard-section {
+    flex: 1;
+    margin-right: 20px; /* Space between the sections */
+}
+
+.leaderboard-section table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.leaderboard-section table, th, td {
+    border: 1px solid #ccc;
+}
+
+.leaderboard-section th, td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.leaderboard-section thead {
+    background-color: #f1f1f1;
+}
+
+/* Styling for the friends list section */
+.friends-list-section {
+    flex: 1;
+}
+
+.friends-list-section table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.friends-list-section table, td {
+    border: 1px solid #ccc;
+}
+
+.friends-list-section td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+/* Add Friend section */
+#add-friend-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 5px;
-    justify-content: center;
-    flex-wrap: wrap;
-    font-size: 11px;
+    gap: 10px;
 }
 
 #add-friend-section input {
@@ -129,40 +193,4 @@ footer p {
     border-radius: 50px;
     padding: 5px 15px;
     font-size: 10px;
-}
-
-/* Styling for Leaderboard Friends List */
-#friends-list {
-    text-align: center;
-    margin-top: 20px;
-}
-
-#friends-list h4 {
-    font-size: 18px;
-}
-
-#friends-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-#friends-list li {
-    font-size: 14px;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-#progress-bar {
-    width: 90%;
-    background-color: #f1f1f1;
-    border-radius: 25px;
-    overflow: hidden;
-    margin: 10px 0;
-}
-
-#progress-bar span {
-    display: block;
-    width: 90%;
-    background-color: #FE9B05;
-    height: 10px;
 }
