@@ -7,11 +7,11 @@ body {
   }
 
   #logo-section {
-    margin-top: -150px; /* Adjust this value as needed */
+    margin-top: -150px; 
   }
 
   #form-section {
-    margin-top: -110px; /* Moves input boxes closer */
+    margin-top: -110px;
   }
   
   header {
@@ -51,44 +51,87 @@ body {
   .navbar-nav .nav-link:hover {
     color: #FE9B05 !important;
   }
+  
+  .circle {
+    width: 50px;
+    height: 50px;
+    background-color: black;
+    border-radius: 50%;
+    margin: 10px 0;
+  }
+  
+  .line {
+    width: 2px;
+    height: 20px;
+    background-color: black;
+}
+  
+  .line.top, .line.bottom {
+    height: 40px;
+  }
+  
+  .star {
+    width: 0;
+    height: 0;
+    border-left: 50px solid black;
+    border-right: 50px solid black;
+    border-bottom: 90px solid black;
+    position: relative;
+    top: 4px;
+    transform: rotate(45deg);
+  }
+  
+  .star:after {
+    content: "";
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 90px solid #f39c12;
+    position: absolute;
+    top: 25px;
+    left: -50px;
+    transform: rotate(90deg);
+  }
 
-menu {
+  .container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border: 1px solid black;
+    padding: 20px;
+  }
+
+  menu {
     flex: 1;
     display: flex;
     flex-direction: row !important;
     list-style: none;
     gap: 15px;
-}
-
-main{
-flex: 1 calc(100vh - 110px);
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: space-around;
-text-align: center;
-}
-/* Map Container */
-.map-container {
-    position: relative;
-    width: 200px;
-    height: 400px;
+  }
+  
+  main {
+    flex: 1 calc(100vh - 110px);
     display: flex;
-    justify-content: center;
-    align-items: flex-start;
-    margin-top: 20px;
-}
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+  }
 
 button {
     border-radius: 50px;
     background-color: #F6BF3F;
     color: white;
     border: none;
-    padding: 10px 30px;
+    padding: 10px 10px;
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+    
 }
 
 button:hover {
