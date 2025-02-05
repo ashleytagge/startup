@@ -125,4 +125,26 @@ input {
       flex: 1 100vh;
     }
   }
+
+  .congrats {
+    font-size: 36px;  /* Make "Congrats" a little bigger */
+    font-weight: bold;
+    margin-bottom: 20px;  /* Adds some space below the "Congrats" */
+  }
+  
+  .points {
+    font-size: 24px;
+    margin-top: 20px;  /* Adds more space between the "Congrats" and the points */
+  }
+
+  .image-container {
+    margin-bottom: 20px;  /* Space between image and buttons */
+  }
+
+  .buttons-container {
+    display: flex;
+      flex-direction: column;  /* Stack buttons vertically */
+      align-items: center;      /* Center the buttons */
+      gap: 15px; 
+  }
   

@@ -34,20 +34,19 @@
     </header>
 
     <main>
-      <div id="treasure">
-    <p>you've collected an...</p>
-    <!-- the treasure name will be a randomly selected name from a list of possibles-->
-    <h2>Ocean Critter</h2>
+      <div class="congrats-container">
+        <div class="congrats">Congrats!</div>
+        <div class="points">You've earned 150 points!</div>
     <!-- the image of the "ocean critter" will be a marine animal that is randomly called from a marine life API -->
-    <img src="mermaid.png" alt="fish" width="200" height="200">
+    <div class="image-container">
+      <img src="mermaid.png" alt="mermaid" width="200">
+    </div>
     <!-- each treasure name will have a certain amount of points associated with it that will display here and be added to the users progress bar in the treasure box-->
-    <p>+50 POINTS!</p>
-    <a href="treasure_chest.html">
-        <button>Open Treasure Chest</button>
-      </a>
-    <a href="map.html">
-    <br><br></rb><button>Close</button>
-    </a>
+    <div class="buttons-container">
+      <!-- Wrap buttons in anchor tags to redirect to the page -->
+      <a href="rewards.html"><button>Open Treasure Chest</button></a>
+      <a href="share.html"><button>Close</button></a>
+    </div>
   </div>
 </main>
     <footer>
