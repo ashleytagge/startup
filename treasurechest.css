@@ -96,15 +96,114 @@ footer p {
     grid-gap: 1em;
   }
   .card {
-    border: #333 solid thick;
+    width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  border: #333 solid thick;
+  border-radius: 1em;
+  background-size: cover; /* Ensures the image covers the whole card */
+  background-position: center; 
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; 
+    transition: transform 0.6s; 
+  }
+
+  .card:hover .card-inner {
+    transform: rotateY(180deg); /* Flip the card on hover */
+  }
+
+  .card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* Hide the back when flipped */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front {
+    background-color: #f1f1f1; /* Front card background */
+    border: 2px solid #333;
     border-radius: 1em;
   }
-  
-  .card:nth-child(odd) {
-    background: hsl(220, 25%, 70%);
+
+  .card-back {
+    background-color: #333; /* Back card background */
+    color: white;
+    transform: rotateY(180deg); /* Rotate the back by 180deg */
+    border: 2px solid #333;
+    border-radius: 1em;
+    padding: 10px;
   }
   
-  .card:nth-child(even) {
-    background: hsl(420, 25%, 70%);
+  .card-back .card-label {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  .card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire card */
+    border-radius: 1em;
+  }
+
+
+  .glowing-title {
+    font-size: 3em;
+    color: #FFD700; /* Gold color for treasure */
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    animation: shine 2s linear infinite; /* Apply the shiny animation */
   }
   
+  @keyframes shimmer {
+    0% {
+      text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Subtle glow */
+    }
+    25% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; /* Stronger glow */
+    }
+    50% {
+      text-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 45px #FFD700; /* Strongest glow */
+    }
+    75% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; /* Back to strong glow */
+    }
+    100% {
+      text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Subtle glow */
+    }
+  }
+  
+  /* Create a shine effect */
+  .glowing-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shine-effect 2s infinite;
+    pointer-events: none; /* Prevent the pseudo-element from interfering with text interaction */
+  }
+  
+  @keyframes shine-effect {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
