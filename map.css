@@ -56,11 +56,25 @@ header {
 .circle {
     width: 50px;
     height: 50px;
-    background-color: transparent;
-    border: 2px solid #F6BF3F; /* Orange outline */
     border-radius: 50%;
     margin: 10px 0;
 }
+
+.circle-1 {
+    border: 2px solid #F6BF3F;
+  }
+
+  .circle-2 {
+    border: 2px solid #F6BF3F;
+  }
+
+  .circle-3 {
+    border: 2px solid #F6BF3F;
+  }
+
+  .circle-4 {
+    border: 2px solid #F6BF3F;
+  }
 
 .line {
     width: 2px;
