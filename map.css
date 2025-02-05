@@ -112,15 +112,20 @@ main {
 
 /* Button Styling */
 button {
-    border-radius: 50px;
+    border-radius: 50%; 
     background-color: #F6BF3F;
     color: white;
     border: none;
-    padding: 10px 30px;
+    padding: 5px 30px; 
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s;
+}
+
+#checkin {
+    position: relative;
+    top: -60px; /* Moves it up by 40px, adjust as needed */
 }
 
 button:hover {
