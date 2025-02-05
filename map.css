@@ -56,24 +56,26 @@ header {
 .circle {
     width: 50px;
     height: 50px;
+    background-color: transparent;
+    border: 2px solid #F6BF3F; /* Orange outline */
     border-radius: 50%;
     margin: 10px 0;
 }
 
 .circle-1 {
-    border: 2px solid #F6BF3F;
+    border: 2px solid #3993DD;
   }
 
   .circle-2 {
-    border: 2px solid #F6BF3F;
+    border: 2px solid #1F01B9;
   }
 
   .circle-3 {
-    border: 2px solid #F6BF3F;
+    border: 2px solid #EF476F;
   }
 
   .circle-4 {
-    border: 2px solid #F6BF3F;
+    border: 2px solid #F6511D;
   }
 
 .line {
@@ -90,7 +92,7 @@ header {
     width: 100px;
     height: 100px;
     background-color: transparent;
-    border: 2px solid #F6BF3F; /* Orange outline */
+    border: 4px solid #FFD166; /* Orange outline */
     border-radius: 50%;
     margin: 10px 0;
 }
