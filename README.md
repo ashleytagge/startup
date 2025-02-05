@@ -130,11 +130,22 @@ Simon HTML Short Cut: https://www.youtube.com/watch?v=zg7eDNRMnWA
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
 - [x] **Header, footer, and main content body** - I not complete this part of the deliverable.
+    -navigation bar is my header, the main content is the body, the footer contains my named and my github link
 - [x] **Navigation elements** - I did complete this part of the deliverable.
+    -this was a pain in the butt, but I did complete this part of the deliverable! I am proud of myself for this part!
 - [x] **Responsive to window resizing** - I did complete this part of the deliverable.
+    -it is responsive to window resizing. I made sure to include the <meta name="viewport" content="width=device-width, initial-scale=1.0"> tag on each html page and tested it by resizing my window.
 - [x] **Application elements** - I did complete this part of the deliverable.
+    -I made the map! I switched the last shape of the map to a larger circle because i couldn't get a star to work. I tried overlapping three triangles and it was insane, maybe I'll add that back in later.
 - [x] **Application text content** - I did complete this part of the deliverable.
+    -I included all the text I will include in the final application.
 - [x] **Application images** - I did complete this part of the deliverable.
+    -This is what I am MOST proud of! I played around with images and animations and the treasure chest page ended up being super cool because of it. 
+
+**Random Notes**
+- The API will be implemented through the checkin notifications. A random ocean fact will appear with the numbers of points they were awarded.
+- Establish a more diverse color palette if there is time because right now everything is orange.
+- Think of a way to make the map page more exciting. I could add an animation in the background.
 
 **Practice Code**
 - Link to CSS Practice: https://codepen.io/ashleytagge/pen/qEWGGgo
