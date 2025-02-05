@@ -142,7 +142,7 @@ button {
 #checkin {
     position: relative;
     top: -60px; 
-
+}
 button:hover {
     background-color: #FE9B05;
 }
