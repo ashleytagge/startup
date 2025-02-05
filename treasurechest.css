@@ -101,7 +101,7 @@ footer p {
   perspective: 1000px;
   border: #333 solid thick;
   border-radius: 1em;
-  background-size: cover; /* Ensures the image covers the whole card */
+  background-size: cover; 
   background-position: center; 
   }
 
@@ -122,20 +122,20 @@ footer p {
   position: absolute;
   width: 100%;
   height: 100%;
-  backface-visibility: hidden; /* Hide the back when flipped */
+  backface-visibility: hidden; 
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 .card-front {
-    background-color: #f1f1f1; /* Front card background */
+    background-color: #f1f1f1; 
     border: 2px solid #333;
     border-radius: 1em;
   }
 
   .card-back {
-    background-color: #333; /* Back card background */
+    background-color: #333; 
     color: white;
     transform: rotateY(180deg); /* Rotate the back by 180deg */
     border: 2px solid #333;
@@ -151,18 +151,18 @@ footer p {
   .card-front img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Ensures the image covers the entire card */
+    object-fit: cover; 
     border-radius: 1em;
   }
 
 
   .glowing-title {
     font-size: 3em;
-    color: #FFD700; /* Gold color for treasure */
+    color: #FFD700; 
     text-align: center;
     font-weight: bold;
     position: relative;
-    animation: shine 2s linear infinite; /* Apply the shiny animation */
+    animation: shine 2s linear infinite; 
   }
   
   @keyframes shimmer {
@@ -183,7 +183,7 @@ footer p {
     }
   }
   
-  /* Create a shine effect */
+  
   .glowing-title::after {
     content: '';
     position: absolute;
@@ -193,7 +193,7 @@ footer p {
     height: 100%;
     background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
     animation: shine-effect 2s infinite;
-    pointer-events: none; /* Prevent the pseudo-element from interfering with text interaction */
+    pointer-events: none; 
   }
   
   @keyframes shine-effect {

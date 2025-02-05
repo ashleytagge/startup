@@ -7,11 +7,11 @@ body {
   }
 
   #logo-section {
-    margin-top: -150px; /* Adjust this value as needed */
+    margin-top: -150px; 
   }
 
   #form-section {
-    margin-top: -110px; /* Moves input boxes closer */
+    margin-top: -110px; 
   }
   
   header {
@@ -79,11 +79,11 @@ input {
   }
 
   button {
-    border-radius: 50px; /* Larger value for more rounded appearance */
+    border-radius: 50px; 
     background-color: #F6BF3F;
     color: white;
     border: none;
-    padding: 10px 30px; /* Adjust padding for a rounder look */
+    padding: 10px 30px; 
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
@@ -96,8 +96,8 @@ input {
   }
 
   #form-section p {
-    margin-top: 20px; /* Adjust this value as needed */
-    font-size: 14px; /* Slightly smaller text */
+    margin-top: 20px; 
+    font-size: 14px; 
     color: #555;
   }
   
