@@ -1,0 +1,196 @@
+body {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    margin: 0;
+}
+
+#logo-section {
+    margin-top: -150px; 
+}
+
+#form-section {
+    margin-top: -110px;
+}
+
+header {
+    flex: 0 80px;
+}
+
+#header-section {
+    margin-top: -130px; 
+    color: #F6BF3F;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #F6BF3F !important; 
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    text-decoration: none !important;
+    padding-left: 0.3em;
+    border-bottom: solid rgb(182, 182, 182) thin;
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+    padding: 0 10px; 
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 10px 15px; 
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FE9B05 !important;
+}
+
+main {
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    align-items: flex-start; 
+    margin-top: 80px;
+    padding: 20px;
+    text-align: center;
+    overflow-y: auto;
+    height: 100%;
+}
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+    gap: 15px;
+}
+
+h2 {
+    font-size: 24px;
+    color: black;
+}
+
+h4 {
+    font-size: 20px;
+    color: #F6BF3F;
+    padding-top: 10%;
+}
+
+table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: center;
+}
+
+thead {
+    background-color: #f1f1f1;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 12px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    margin-top: 20px; 
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #333;
+}
+
+content-container {
+    display: flex;
+    justify-content: space between; 
+    width: 100%;
+}
+
+
+.leaderboard-section {
+    flex: 1;
+    margin-right: 20px; 
+}
+
+.leaderboard-section table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.leaderboard-section table, th, td {
+    border: 1px solid #ccc;
+}
+
+.leaderboard-section th, td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.leaderboard-section thead {
+    background-color: #f1f1f1;
+}
+
+
+.friends-list-section {
+    flex: 1;
+}
+
+.friends-list-section table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.friends-list-section table, td {
+    border: 1px solid #ccc;
+}
+
+.friends-list-section td {
+    padding: 8px 12px;
+    text-align: left;
+}
+
+
+#add-friend-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#add-friend-section input {
+    border-radius: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 120px;
+}
+
+#add-friend-section button {
+    border-radius: 50px;
+    padding: 5px 15px;
+    font-size: 10px;
+}

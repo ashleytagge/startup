@@ -1,0 +1,133 @@
+body {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    margin: 0;
+  }
+
+  #logo-section {
+    margin-top: -250px; 
+  }
+
+  #form-section {
+    margin-top: -200px; 
+  }
+  
+  header {
+    flex: 0 80px;
+  }
+
+  #header-section {
+    margin-top: -200px; 
+    color: #F6BF3F
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    background-color: #F6BF3F !important; 
+    padding: 10px 20px;
+  }
+  
+  .navbar-brand {
+    text-decoration: none  !important;
+    padding-left: 0.3em;
+    border-bottom: solid rgb(182, 182, 182) thin;
+    color: white !important;
+    font-weight: bold;
+  }
+  
+  .navbar-nav .nav-item {
+    padding: 0 10px; 
+  }
+
+  .navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 10px 15px; 
+  }
+  
+  .navbar-nav .nav-link:hover {
+    color: #FE9B05 !important;
+  }
+  
+  menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+    gap: 15px;
+  }
+  
+  main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+  }
+
+  /* Round input boxes */
+input {
+    border-radius: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 75%;
+    max-width: 250px;
+  }
+
+  button {
+    border-radius: 50px; 
+    background-color: #F6BF3F;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  
+  button:hover {
+    background-color: #FE9B05;
+  }
+
+  #form-section p {
+    margin-top: 20px; 
+    font-size: 14px; 
+    color: #555;
+  }
+  
+  footer {
+    flex: 0 30px;
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+  }
+  
+  footer a {
+    color: #0077b6;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  footer a:hover {
+    text-decoration: underline;
+  }
+  
+  @media (max-height: 600px) {
+    header {
+      display: none;
+    }
+    footer {
+      display: none;
+    }
+    main {
+      flex: 1 100vh;
+    }
+  }
+  

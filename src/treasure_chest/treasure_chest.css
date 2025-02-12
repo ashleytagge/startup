@@ -1,0 +1,209 @@
+body {
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    min-width: 375px;
+    margin: 0;
+}
+
+#logo-section {
+    margin-top: -150px; 
+}
+
+#form-section {
+    margin-top: -110px;
+}
+
+header {
+    flex: 0 80px;
+}
+
+#header-section {
+    margin-top: -130px; 
+    color: #F6BF3F;
+}
+
+/* Navbar Styling */
+.navbar {
+    background-color: #F6BF3F !important; 
+    padding: 10px 20px;
+}
+
+.navbar-brand {
+    text-decoration: none !important;
+    padding-left: 0.3em;
+    border-bottom: solid rgb(182, 182, 182) thin;
+    color: white !important;
+    font-weight: bold;
+}
+
+.navbar-nav .nav-item {
+    padding: 0 10px; 
+}
+
+.navbar-nav .nav-link {
+    color: white !important;
+    font-weight: 500;
+    transition: 0.3s;
+    padding: 10px 15px; 
+}
+
+.navbar-nav .nav-link:hover {
+    color: #FE9B05 !important;
+}
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+    gap: 15px;
+}
+
+main {
+    flex: 1 calc(100vh - 110px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+footer {
+    background-color: #f1f1f1;
+    text-align: center;
+    padding: 8px 0;
+    font-size: 12px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+}
+
+footer p {
+    margin-top: 10px;
+    font-size: 10px;
+    color: #333;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 200px;
+    grid-gap: 1em;
+  }
+  .card {
+    width: 200px;
+  height: 300px;
+  perspective: 1000px;
+  border: #333 solid thick;
+  border-radius: 1em;
+  background-size: cover; 
+  background-position: center; 
+  }
+
+  .card-inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d; 
+    transition: transform 0.6s; 
+  }
+
+  .card:hover .card-inner {
+    transform: rotateY(180deg); /* Flip the card on hover */
+  }
+
+  .card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-front {
+    background-color: #f1f1f1; 
+    border: 2px solid #333;
+    border-radius: 1em;
+  }
+
+  .card-back {
+    background-color: #333; 
+    color: white;
+    transform: rotateY(180deg); /* Rotate the back by 180deg */
+    border: 2px solid #333;
+    border-radius: 1em;
+    padding: 10px;
+  }
+  
+  .card-back .card-label {
+    font-size: 1.2em;
+    text-align: center;
+  }
+
+  .card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 1em;
+  }
+
+
+  .glowing-title {
+    font-size: 3em;
+    color: #FFD700; 
+    text-align: center;
+    font-weight: bold;
+    position: relative;
+    animation: shine 2s linear infinite; 
+  }
+  
+  @keyframes shimmer {
+    0% {
+      text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Subtle glow */
+    }
+    25% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; /* Stronger glow */
+    }
+    50% {
+      text-shadow: 0 0 15px #FFD700, 0 0 30px #FFD700, 0 0 45px #FFD700; /* Strongest glow */
+    }
+    75% {
+      text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700; /* Back to strong glow */
+    }
+    100% {
+      text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 15px #FFD700; /* Subtle glow */
+    }
+  }
+  
+  
+  .glowing-title::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.8), transparent);
+    animation: shine-effect 2s infinite;
+    pointer-events: none; 
+  }
+  
+  @keyframes shine-effect {
+    0% {
+      left: -100%;
+    }
+    50% {
+      left: 100%;
+    }
+    100% {
+      left: -100%;
+    }
+  }
