@@ -15,11 +15,11 @@ export function Login() {
 
       <div id="form-section">
         <form action="map.html" method="get">
-          <label htmlFor="adventure-id">Adventure ID:</label>
+          <label for="adventure-id">Adventure ID:</label>
           <br />
           <input type="text" id="adventure-id" name="adventure_id" placeholder="paddleboardgurrrl" required />
           <br /><br />
-          <label htmlFor="password">Password:</label>
+          <label for="password">Password:</label>
           <br />
           <input type="password" id="password" name="password" placeholder="***********" required />
           <br /><br />

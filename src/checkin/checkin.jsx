@@ -1,6 +1,14 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Checkin() {
+
+  const navigate = useNavigate();
+
+  const saveCheckIn = () => {
+    navigate('/treasure'); 
+  };
+
   return (
     
 <main>
@@ -22,9 +30,11 @@ export function Checkin() {
           <br />
           <input type="text" id="activity" name="activity" placeholder="swimming" />
           <br /><br />
-          <button type="submit">Save</button>
           <br />
         </form>
+        <div id="savecheckin">
+          <button onClick={saveCheckIn}>Save</button>
+          </div>
       </div>
     </main>
 

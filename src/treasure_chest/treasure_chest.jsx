@@ -1,115 +1,40 @@
 import React from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './treasure_chest.css';
 
 export function TreasureChest() {
   return (
     <main>
-     <div>
-      <h1 class="glowing-title">Your Treasure Chest</h1>
-     </div>
-     <body>
-      <div class="container">
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="turtle.png" alt="Speedy Shell" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Speedy Shell<br /><small>Location: Turtle Beach</small></div>
-            </div>
-          </div>
+        <div>
+          <h1 className="glowing-title">Your Treasure Chest</h1>
         </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="goldenpaddle.png" alt="Golden Paddle" />
+
+        <div className="container">
+          {[
+            { src: "turtle.png", alt: "Speedy Shell", label: "Speedy Shell", location: "Turtle Beach" },
+            { src: "goldenpaddle.png", alt: "Golden Paddle", label: "Golden Paddle", location: "Horseshoe Bend" },
+            { src: "pump.png", alt: "Pump Up the Jam", label: "Pump Up the Jam", location: "Saguaro Lake" },
+            { src: "pearl.png", alt: "Pearl-fect Catch", label: "Pearl-fect Catch", location: "Newport Beach" },
+            { src: "mermaid.png", alt: "Mermaid Tail", label: "Mermaid Tail", location: "Echo Lake" },
+            { src: "islandbeater.png", alt: "Island Beater", label: "Island Beater", location: "Hukilau Beach" },
+            { src: "tackle.png", alt: "Tackle Box", label: "Tackle Box", location: "Provo River" },
+            { src: "blue.png", alt: "Blue Wave Wonder", label: "Blue Wave Wonder", location: "Mid Atlantic Ocean" },
+            { src: "goldenpaddle.png", alt: "Golden Paddle", label: "Golden Paddle", location: "Niagra Falls" }
+          ].map((item, index) => (
+            <div key={index} className="card">
+              <div className="card-inner">
+                <div className="card-front">
+                  <img src={item.src} alt={item.alt} />
+                </div>
+                <div className="card-back">
+                  <div className="card-label">
+                    {item.label} <br /><small>Location: {item.location}</small>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="card-back">
-              <div class="card-label">Golden Paddle<br /><small>Location: Horseshoe Bend</small></div>
-            </div>
-          </div>
+          ))}
         </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="pump.png" alt="Pump Up the Jam" /> 
-            </div>
-            <div class="card-back">
-              <div class="card-label">Pump Up the Jam<br /><small>Location: Saguaro Lake</small></div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="pearl.png" alt="Pearl-fect Catch" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Pearl-fect Catch<br /><small>Location: Newport Beach</small></div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="mermaid.png" alt="Mermaid Tail" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Mermaid Tail<br /><small>Location: Echo Lake</small></div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="islandbeater.png" alt="Island Beater" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Island Beater<br /><small>Location: Hukilau Beach</small></div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="tackle.png" alt="Tackle Box" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Tackle Box<br /><small>Location: Provo River</small></div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="blue.png" alt="Blue Wave Wonder" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Blue Wave Wonder<br /><small>Location: Mid Atlantic Ocean</small></div>
-            </div>
-          </div>
-        </div>
-    
-        <div class="card">
-          <div class="card-inner">
-            <div class="card-front">
-              <img src="goldenpaddle.png" alt="Golden Paddle" />
-            </div>
-            <div class="card-back">
-              <div class="card-label">Golden Paddle <br /><small>Location: Niagra Falls</small></div>
-            </div>
-          </div>
-        </div>
-    
-      </div>
-    </body>
-    
-</main>
+      </main>
   );
 }

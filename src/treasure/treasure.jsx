@@ -1,24 +1,23 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export function Treasure() {
+  const navigate = useNavigate();
+
   return (
     
     <main>
-  <div class="congrats-container">
-    <div class="congrats">Congrats!</div>
-    <div class="points">You've earned 150 points!</div>
-    
-    <div class="image-container">
-      <img src="mermaid.png" alt="A mermaid illustration" width="200" />
-    </div>
-
-    <div class="buttons-container">
-
-      <a href="treasure_chest.html" class="btn">Open Treasure Chest</a>
-      <a href="map.html" class="btn">Close</a>
-    </div>
-  </div>
-</main>
-
+      <div className="congrats-container">
+        <div className="congrats">Congrats!</div>
+        <div className="points">You've earned 150 points!</div>
+        <div className="image-container">
+          <img src="mermaid.png" alt="mermaid" width="200" />
+        </div>
+        <div className="buttons-container">
+          <button onClick={() => navigate('/treasurechest')}>Open Treasure Chest</button>
+          <button onClick={() => navigate('/map')}>Close</button>
+        </div>
+      </div>
+    </main>
   );
 }

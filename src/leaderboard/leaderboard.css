@@ -23,35 +23,6 @@ header {
     color: #F6BF3F;
 }
 
-/* Navbar Styling */
-.navbar {
-    background-color: #F6BF3F !important; 
-    padding: 10px 20px;
-}
-
-.navbar-brand {
-    text-decoration: none !important;
-    padding-left: 0.3em;
-    border-bottom: solid rgb(182, 182, 182) thin;
-    color: white !important;
-    font-weight: bold;
-}
-
-.navbar-nav .nav-item {
-    padding: 0 10px; 
-}
-
-.navbar-nav .nav-link {
-    color: white !important;
-    font-weight: 500;
-    transition: 0.3s;
-    padding: 10px 15px; 
-}
-
-.navbar-nav .nav-link:hover {
-    color: #FE9B05 !important;
-}
-
 main {
     display: flex;
     flex-direction: row;
@@ -62,6 +33,7 @@ main {
     text-align: center;
     overflow-y: auto;
     height: 100%;
+    flex-wrap: wrap;
 }
 
 menu {
@@ -85,7 +57,8 @@ h4 {
 
 table {
     width: 100%;
-    margin: 20px 0;
+    max-width: 500px;
+    margin: 20px auto;
     border-collapse: collapse;
 }
 
@@ -102,32 +75,12 @@ thead {
     background-color: #f1f1f1;
 }
 
-footer {
-    background-color: #f1f1f1;
-    text-align: center;
-    padding: 8px 0;
-    font-size: 12px;
-    position: relative;
-    width: 100%;
+.content-container {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-    margin-top: 20px; 
-}
-
-footer p {
-    margin-top: 10px;
-    font-size: 10px;
-    color: #333;
-}
-
-content-container {
-    display: flex;
-    justify-content: space between; 
+    justify-content: space-between; 
     width: 100%;
+    flex-wrap: wrap;
 }
-
 
 .leaderboard-section {
     flex: 1;
@@ -140,11 +93,8 @@ content-container {
     border-collapse: collapse;
 }
 
-.leaderboard-section table, th, td {
+.leaderboard-section th, .leaderboard-section td {
     border: 1px solid #ccc;
-}
-
-.leaderboard-section th, td {
     padding: 8px 12px;
     text-align: left;
 }
@@ -152,7 +102,6 @@ content-container {
 .leaderboard-section thead {
     background-color: #f1f1f1;
 }
-
 
 .friends-list-section {
     flex: 1;
@@ -164,15 +113,11 @@ content-container {
     border-collapse: collapse;
 }
 
-.friends-list-section table, td {
-    border: 1px solid #ccc;
-}
-
 .friends-list-section td {
+    border: 1px solid #ccc;
     padding: 8px 12px;
     text-align: left;
 }
-
 
 #add-friend-section {
     margin-top: 20px;
@@ -197,12 +142,12 @@ content-container {
 
 progress::-webkit-progress-bar {
     background-color: #f3f3f3; /* Light background */
-  }
+}
   
-  progress::-webkit-progress-value {
+progress::-webkit-progress-value {
     background-color: #FE9B05; /* Orange color for the progress */
-  }
+}
   
-  progress::-moz-progress-bar {
+progress::-moz-progress-bar {
     background-color: #FE9B05; 
-  }
+}

@@ -44,6 +44,8 @@ export default function App() {
   <Route path='/map' element={<Map />} />
   <Route path='/leaderboard' element={<Leaderboard />} />
   <Route path='/treasurechest' element={<TreasureChest />} />
+  <Route path='/checkin' element={<Checkin />} />
+  <Route path='/treasure' element={<Treasure />} />
   <Route path='*' element={<NotFound />} />
 </Routes>
 
