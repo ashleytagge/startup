@@ -40,6 +40,7 @@ export default function App() {
 
   <Routes>
   <Route path='/' element={<Login />} exact />
+  <Route path='/login' element={<Login />} />
   <Route path='/map' element={<Map />} />
   <Route path='/leaderboard' element={<Leaderboard />} />
   <Route path='/treasurechest' element={<TreasureChest />} />
