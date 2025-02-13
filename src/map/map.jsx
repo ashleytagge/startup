@@ -14,16 +14,14 @@ export function Map() {
 
   return (
     <main>
-      <div className="container">
-        <div className="circle circle-1"></div>
-        <div className="line"></div>
-        <div className="circle circle-2"></div>
-        <div className="line"></div>
-        <div className="circle circle-3"></div>
-        <div className="line"></div>
-        <div className="circle circle-4"></div>
-        <div className="line bottom"></div>
-        <div className="largecircle"></div>
+      <div class="wrapper">
+        <ul class="StepProgress">
+          <li class="StepProgress-item is-done"></li>
+          <li class="StepProgress-item is-done"></li>
+           <li class="StepProgress-item current"></li>
+          <li class="StepProgress-item"></li>
+           <li class="StepProgress-item"></li>
+        </ul>
       </div>
       <div id="checkin">
         <button onClick={handleCheckIn}>Check In</button>

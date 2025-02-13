@@ -2,15 +2,16 @@
   display: flex;
   flex-direction: column;
   min-width: 375px;
+  height: 100%;
 }
 
 header {
   flex: 0 80px;
-  background-color: #F6BF3F; 
+  background-color: #FF8C00; 
 }
 
 main {
-  background-color: white !important;
+  background-color: #FAF9F6 !important;
   flex: 1 calc(100vh - 110px);
   display: flex;
   flex-direction: column;
@@ -21,7 +22,7 @@ main {
 footer p {
   margin-top: 10px;
   font-size: 10px;
-  color: white;
+  color: #FCFDFF;
 }
 
 footer a {
@@ -50,12 +51,12 @@ menu {
 }
 
 .navbar {
-  background-color: #F6BF3F !important;
+  background-color: #FFAC48 !important;
 }
 
 .navbar-brand {
   padding-left: 0.3em;
-  color: white !important;
+  color: #FCFDFF !important;
   font-weight: bold;
 }
 
@@ -64,14 +65,14 @@ menu {
 }
 
 .navbar-nav .nav-link {
-  color: white !important;
+  color: #FCFDFF !important;
   font-weight: 500;
   transition: 0.3s;
   padding: 10px 15px;
 }
 
 .navbar-nav .nav-link:hover {
-  color: #FE9B05 !important;
+  color: #FF8C00 !important;
 }
 
 
@@ -82,15 +83,17 @@ menu .nav-item {
 button {
   border-radius: 20%;
   align-items: center;
-  background-color: #F6BF3F;
-  color: white;
+  background-color: #FFAC48;
+  color: #FCFDFF;
   border: none;
   padding: 10px 30px;
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+  margin-bottom: 100px;
+  margin-top: 50px;
 }
 button:hover {
-  background-color: #FE9B05;
+  background-color: #FF8C00;
 }

@@ -13,18 +13,17 @@
 }
 
 /* Optional: Adjust margins for specific elements if needed */
-.page-content h1,
-.page-content p{
-  margin-top: 50px;
-} 
-.page-content div {
-  margin-bottom: 15px;
+.page-content h2{
+  margin-bottom: 50px;
 }
+.page-content p{
+  margin-top: 10px;
+} 
 
 /* Ensure images and other block elements are centered */
 .page-content img {
-  margin-top: 150px;
-  margin-bottom: 50px;
+  margin-top: 80px;
+  margin-bottom: 40px;
 }
 .page-content iframe {
   display: block;
@@ -39,7 +38,13 @@
 }
 
 #header-section h2 {
-  color: #FE9B05; 
+    font-family: 'Impact';
+    font-size: 36px; /* Big and bold */
+    font-weight: 400;
+    color: #FF8C00; 
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
 }
 
 .page-content label {
