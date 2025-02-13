@@ -6,8 +6,7 @@
 
 header {
   flex: 0 80px;
-  background-color: #F6BF3F; /* Match navbar */
-  padding: 10px 20px;
+  background-color: #F6BF3F; 
 }
 
 main {
@@ -17,21 +16,6 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-}
-
-footer {
-  flex: 0 30px;
-  background-color: #FE9B05 !important;
-  text-align: center;
-  padding: 8px 0;
-  font-size: 12px;
-  position: relative;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
-  margin-top: 20px;
 }
 
 footer p {
@@ -50,12 +34,8 @@ menu {
   /*  overwrite Bootstrap so the menu does not wrap */
   flex-direction: row !important;
   list-style: none;
-  text-align: center;
 }
 
-menu .nav-item {
-  padding: 0 0.3em;
-}
 
 @media (max-height: 600px) {
   header {
@@ -71,13 +51,10 @@ menu .nav-item {
 
 .navbar {
   background-color: #F6BF3F !important;
-  padding: 10px 20px;
 }
 
 .navbar-brand {
-  text-decoration: none !important;
   padding-left: 0.3em;
-  border-bottom: solid rgb(182, 182, 182) thin;
   color: white !important;
   font-weight: bold;
 }
@@ -97,6 +74,11 @@ menu .nav-item {
   color: #FE9B05 !important;
 }
 
+
+menu .nav-item {
+  padding: 0 0.3em;
+}
+
 button {
   border-radius: 20%;
   align-items: center;
@@ -108,4 +90,7 @@ button {
   font-weight: bold;
   cursor: pointer;
   transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #FE9B05;
 }
