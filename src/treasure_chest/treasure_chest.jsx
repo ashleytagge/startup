@@ -6,7 +6,7 @@ export function TreasureChest() {
   return (
     <main>
         <div>
-          <h1 className="glowing-title">Your Treasure Chest</h1>
+          <h1 className="glowing-title">Treasure Chest</h1>
         </div>
 
         <div className="container">

@@ -11,7 +11,7 @@
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Makes responsive columns */
   grid-auto-rows: 200px; /* Height of the cards */
   grid-gap: 1em;
-  margin-top: 100px; /* Adjust for navbar */
+  margin-top: 30px; /* Adjust for navbar */
 }
 
 /* Cards */
@@ -82,7 +82,8 @@
 
 /* Glowing Title */
 .glowing-title {
-  font-size: 3em;
+  padding-top: 15%;
+  font-size: 4em;
   color: #FFD700;
   text-align: center;
   font-weight: bold;

@@ -1,4 +1,6 @@
 import React from 'react';
+import './map.css';
+
 
 import { useNavigate } from 'react-router-dom';
 

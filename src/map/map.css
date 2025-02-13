@@ -100,18 +100,6 @@ main {
     position: relative; /* Adjust positioning for the button */
 }
 
-button {
-    border-radius: 50%;
-    background-color: #F6BF3F;
-    color: white;
-    border: none;
-    padding: 10px 30px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-}
-
 #checkin {
     margin-top: 20px; /* Remove absolute positioning */
 }
