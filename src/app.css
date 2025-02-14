@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   min-width: 375px;
-  height: 100%;
+ 
 }
 
 header {
@@ -17,6 +17,12 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+footer {
+  flex: 0 0 30px; /* Ensures footer is exactly 30px */
+  background-color: #333; 
+  width: 100%;
 }
 
 footer p {
@@ -81,7 +87,7 @@ menu .nav-item {
 }
 
 button {
-  border-radius: 20%;
+  border-radius: 20px;
   align-items: center;
   background-color: #FFAC48;
   color: #FCFDFF;
@@ -92,8 +98,28 @@ button {
   cursor: pointer;
   transition: background-color 0.3s;
   margin-bottom: 100px;
-  margin-top: 50px;
+  margin-top: 20px;
 }
 button:hover {
   background-color: #FF8C00;
+}
+
+#form-section {
+  padding: 10px;
+  border-radius: 10px;
+  width: 60%;
+  max-width: 400px;
+}
+label {
+  font-size: 10px;
+  color: #ccc;
+ 
+}
+input {
+  border-radius: 20px;
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  width: 60%;
+  max-width: 300px;
+  margin-top: 5px;
 }

@@ -1,46 +1,53 @@
 import React from 'react';
+import './leaderboard.css';
 
 export function Leaderboard() {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("Friend request sent!"); // You can replace this with your desired logic
+  };
+
   return (
-    
     <main>
       <div className="content-container">
         <div className="leaderboard-section">
-          <img src="crown.jpg" width="150" height="100" alt="Crown" />
           <h2>FRIENDS LEADERBOARD</h2>
-          <h4>My Progress</h4>
-          <div style={{ paddingBottom: "10%" }}>
-            <progress value="80" max="100" style={{ width: "100%", height: "40px", appearance: "none" }}>
+          <h4>Badge Progress:</h4>
+          <div style={{ paddingBottom: '10%' }}>
+            <progress value="80" max="100" style={{ width: '100%', height: '20px', appearance: 'none' }}>
               <span>60%</span>
             </progress>
           </div>
-          <table>
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Name</th>
-                <th>Score</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>paddleboardgurrrl</td>
-                <td>350</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>spenytagg6</td>
-                <td>200</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>ComsoDaCougar</td>
-                <td>50</td>
-              </tr>
-            </tbody>
-          </table>
+          <div className="tables">
+            <table>
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Name</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>paddleboardgurrrl</td>
+                  <td>350</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>spenytagg6</td>
+                  <td>200</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>ComsoDaCougar</td>
+                  <td>50</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
+
         <div className="friends-list-section">
           <table>
             <thead>
@@ -59,7 +66,19 @@ export function Leaderboard() {
           </table>
         </div>
       </div>
-    </main>
 
+      {/* Add Friend Form */}
+<div id="form-section">
+  <form onSubmit={handleSubmit}>
+    <label htmlFor="add-friend">Friend's ID:</label>
+    <br />
+    <input type="text" id="add-friend" name="friend-name" placeholder="bestfriend4ever" required />
+    <br /><br />
+    <div id="add-friend-button">
+    <button type="submit">Add Friend</button>
+    </div>
+  </form>
+</div>
+    </main>
   );
 }

@@ -1,102 +1,52 @@
-body {
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    min-width: 375px;
-    margin: 0;
-  }
+.congrats-container {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  #logo-section {
-    margin-top: -250px; 
-  }
+.image-container {
+  margin: 10px;
+  margin-bottom: 20px;
+}
 
-  #form-section {
-    margin-top: -200px; 
-  }
-  
-  header {
-    flex: 0 80px;
-  }
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+}
+.buttons-container button {
+  margin: 5px; /* Ensures no margin between buttons */
+  border-top: none; /* Optional: Removes border if buttons visually "stack" together */
+  border-radius: 0; /* Optional: Makes buttons seamlessly touch each other */
+}
 
-  #header-section {
-    margin-top: -200px; 
-    color: #F6BF3F
-  }
-  
-  menu {
-    flex: 1;
-    display: flex;
-    flex-direction: row !important;
-    list-style: none;
-    gap: 15px;
-  }
-  
-  main {
-    flex: 1 calc(100vh - 110px);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-around;
-    text-align: center;
-  }
+.buttons-container button:first-child {
+  border-radius: 20px; /* Rounded top */
+}
 
-  
-input {
-    border-radius: 20px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    width: 75%;
-    max-width: 250px;
-  }
+.buttons-container button:last-child {
+  border-radius: 20px; /* Rounded bottom */
+}
 
-  button {
-    border-radius: 50px; 
-    background-color: #F6BF3F;
-    color: white;
-    border: none;
-    padding: 10px 30px; 
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  
-  button:hover {
-    background-color: #FE9B05;
-  }
-  
-  @media (max-height: 600px) {
-    header {
-      display: none;
-    }
-    footer {
-      display: none;
-    }
-    main {
-      flex: 1 100vh;
-    }
-  }
+#congrats h2 {
+  font-family: 'Impact';
+  font-size: 36px; /* Big and bold */
+  font-weight: 400;
+  color: #FF8C00; 
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-top: 10px;
+  margin-bottom: 50px
+}
 
-  .congrats {
-    font-size: 36px;  
-    font-weight: bold;
-    margin-bottom: 20px; 
-  }
+.points p {
+  font-family: 'Impact';
+  color: #FF8C00;
+  font-size: 20px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-top: 5px;
   
-  .points {
-    font-size: 24px;
-    margin-top: 20px; 
-  }
-
-  .image-container {
-    margin-bottom: 20px;  
-  }
-
-  .buttons-container {
-    display: flex;
-      flex-direction: column; 
-      align-items: center;     
-      gap: 15px; 
-  }
-  
+}

@@ -1,7 +1,15 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './login.css';
 
 export function Login() {
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevents default form submission
+    navigate('/map'); // Navigate to Map component
+  };
+
   return (
     <main className="page-content">
       <div id="logo-section">
@@ -13,7 +21,7 @@ export function Login() {
       </div>
 
       <div id="form-section">
-        <form action="map.html" method="get">
+        <form onSubmit={handleSubmit}>
           <label htmlFor="adventure-id">Adventure ID:</label>
           <br />
           <input type="text" id="adventure-id" name="adventure_id" placeholder="paddleboardgurrrl" required />

@@ -10,7 +10,7 @@
 .StepProgress::before {
   content: '';
   position: absolute;
-  top: 50px;
+  top: 100px;
   left: 32px;
   width: 4px;
   height: 80%;
@@ -41,7 +41,7 @@
 .StepProgress-item::after {
   content: '';
   position: absolute;
-  top: 50px;
+  top: 100px;
   left: -60px;
   width: 70px;
   height: 70px;
@@ -77,6 +77,6 @@
 }
 
 #checkin {
-  margin-top: 20px;
+  margin-top: 70px;
   text-align: center;
 }
