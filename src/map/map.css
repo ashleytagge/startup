@@ -80,3 +80,13 @@
   margin-top: 70px;
   text-align: center;
 }
+
+.StepProgress-item.is-done {
+  background-color: green;
+  border-color: green;
+}
+
+.StepProgress-item.current {
+  background-color: white;
+  border-color: blue;
+}
