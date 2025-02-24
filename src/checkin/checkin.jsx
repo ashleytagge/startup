@@ -5,8 +5,8 @@ export function Checkin() {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents the default form submission
-    navigate('/treasure'); // Navigate to the Map component route
+    e.preventDefault(); 
+    navigate('/map'); 
   };
 
   return (
