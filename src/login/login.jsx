@@ -2,12 +2,29 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
+// internal database for users
+const users = {};
+
 export function Login() {
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault(); // Prevents default form submission
-    navigate('/map'); // Navigate to Map component
+    e.preventDefault(); // Prevent the default form from submitting an empty user
+
+    const username = e.target['adventure-id'].value;
+    const password = e.target['password'].value;
+
+    if (!users[username]) {
+      // Automatically create an account they don't have one
+      users[username] = { password, friends: [] };
+      console.log(`Account created for ${username}`);
+    } else if (users[username].password !== password) {
+      alert('Incorrect password');
+      return;
+    }
+
+    localStorage.setItem('currentUser', username); 
+    navigate('/map'); // Navigate to map
   };
 
   return (
@@ -37,4 +54,20 @@ export function Login() {
       </div>
     </main>
   );
+}
+
+// Access the current user and display the name on main game page
+export function getCurrentUser() {
+  return localStorage.getItem('currentUser');
+}
+
+// Add a friend by their username
+export function addFriend(friendUsername) {
+  const currentUser = getCurrentUser();
+  if (users[friendUsername] && currentUser && !users[currentUser].friends.includes(friendUsername)) {
+    users[currentUser].friends.push(friendUsername);
+    console.log(`${friendUsername} added as a friend!`);
+  } else {
+    console.log('Friend not found or already added.');
+  }
 }
