@@ -24,6 +24,16 @@ export function Login() {
     }
 
     localStorage.setItem('currentUser', username); 
+
+    //reset local storage for a new user
+    //this is temporary until we set up our databases. for now it will just help show functionality.
+    localStorage.removeItem('locations');
+    localStorage.removeItem('activities');
+    localStorage.removeItem('images');
+    localStorage.removeItem('newPoints');
+    localStorage.removeItem('progress');
+    localStorage.removeItem('points');
+
     navigate('/map'); // Navigate to map
   };
 
