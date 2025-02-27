@@ -24,7 +24,7 @@ export function TreasureChest() {
         <div>
           <h1 className="glowing-title">TREASURE CHEST</h1>
         </div>
-        <p>Your treasure chest is empty. Start collecting treasures by checking in!</p>
+        <p id="treasure-message">Your treasure chest is empty. Start collecting treasures by checking in!</p>
       </main>
     );
   }
