@@ -23,7 +23,8 @@ export function Map() {
   const handleCheckIn = () => {
     // Increment progress by 1 and add points depending on which step the user is on
     let newProgress = progress + 1;
-    const newPoints = points + (newProgress === 5 ? 300 : 100);  // 300 points for the last step! yay you checked in 5 times!
+    const newpoints = newProgress === 5 ? 300 : 100;  // 300 points for the last step! yay you checked in 5 times!
+    const newTotalPoints = points + newpoints; //add another local variable so I can display on treasure page
 
     if (newProgress >= 5) {
       newProgress = 0; // Reset progress after completing step 5
@@ -36,6 +37,7 @@ export function Map() {
     // Save updated progress and points to local storage
     localStorage.setItem('progress', newProgress);
     localStorage.setItem('points', newPoints);
+    localStorage.setItem('newpoints', JSON.stringify(newpoints));
 
     // Navigate to the check-in page
     navigate('/checkin');
