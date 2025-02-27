@@ -33,6 +33,7 @@ export function Login() {
     localStorage.removeItem('newPoints');
     localStorage.removeItem('progress');
     localStorage.removeItem('points');
+    localStorage.removeItem('friends');
 
     navigate('/map'); // Navigate to map
   };
