@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './treasure.css';
 
@@ -6,7 +6,7 @@ export function Treasure() {
   //local storages
   const navigate = useNavigate();
   const [image, setImage] = useState('goldenpaddle.png'); // Placeholder image before api image generator
-  const newpoints = JSON.parse(localStorage.getItem('newpoints')) || 100; //get newpoints and use 100 as a saftey net
+  const newPoints = JSON.parse(localStorage.getItem('newPoints')) || 100; //get newpoints and use 100 as a saftey net
 
   useEffect(() => {
     // create my api random image generator placeholder
@@ -30,7 +30,7 @@ export function Treasure() {
     <main>
   <div className="congrats-container">
     <div className="congrats"><h2>Congratulations!</h2></div>
-    <div className="points"><p>+{newpoints} POINTS</p></div>
+    <div className="points"><p>+{newPoints} POINTS</p></div>
     <div className="image-container">
       <img src={image} alt="marine animal" width="200" />
     </div>
