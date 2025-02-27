@@ -6,6 +6,26 @@ export function Checkin() {
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
+
+    //grab the users input for local storage
+    const location = e.target.Location.value;
+    const activity = e.target.activity.value;
+
+
+    //existing lists
+    const locations = JSON.parse(localStorage.getItem('locations')) || [];
+    const activities = JSON.parse(localStorage.getItem('activities')) || [];
+
+    //add new location and activity
+    locations.unshift(location);
+    activities.unshift(activity);
+
+    //save updated lists to local storage
+    localStorage.setItem('locations', JSON.stringify(locations));
+    localStorage.setItem('activities', JSON.stringify(activities));
+
+    //test functionality!!!!!!
+
     navigate('/map'); 
   };
 
@@ -27,7 +47,7 @@ export function Checkin() {
           <br /><br />
           <label htmlFor="activity">Activity:</label>
           <br />
-          <input type="text" id="activity" name="activity" placeholder="swimming" />
+          <input type="text" id="activity" name="activity" placeholder="swimming" required />
           <br /><br />
           <button type="submit">Save</button>
           <br />
