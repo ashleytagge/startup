@@ -69,21 +69,13 @@ export function Leaderboard() {
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>paddleboardgurrrl</td>
-                  <td>350</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>spenytagg6</td>
-                  <td>200</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>ComsoDaCougar</td>
-                  <td>50</td>
-                </tr>
+                {leaderboard.map((user, index) => (
+                  <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{user.name}</td>
+                    <td>{user.score}</td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -97,29 +89,36 @@ export function Leaderboard() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Spenytagg6</td>
-              </tr>
-              <tr>
-                <td>CosmoDaCougar</td>
-              </tr>
+              {friends.map((friend, index) => (
+                <tr key={index}>
+                  <td>{friend}</td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
       </div>
 
       {/* Add Friend Form */}
-<div id="form-section">
-  <form onSubmit={handleSubmit}>
-    <label htmlFor="add-friend">Friend's ID:</label>
-    <br />
-    <input type="text" id="add-friend" name="friend-name" placeholder="bestfriend4ever" required />
-    <br /><br />
-    <div id="add-friend-button">
-    <button type="submit">Add Friend</button>
-    </div>
-  </form>
-</div>
+      <div id="form-section">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="add-friend">Friend's ID:</label>
+          <br />
+          <input
+            type="text"
+            id="add-friend"
+            name="friend-name"
+            placeholder="bestfriend4ever"
+            value={friendName}
+            onChange={(e) => setFriendName(e.target.value)}
+            required
+          />
+          <br /><br />
+          <div id="add-friend-button">
+            <button type="submit">Add Friend</button>
+          </div>
+        </form>
+      </div>
     </main>
   );
 }
