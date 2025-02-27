@@ -1,8 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './treasure_chest.css';
 
 export function TreasureChest() {
+
+  const [locations, setLocations] = useState([]);
+  const [activities, setActivities] = useState([]);
+  const [images, setImages] = useState([]);
+
+  useEffect(() => {
+    const savedLocations = JSON.parse(localStorage.getItem('locations')) || [];
+    const savedActivities = JSON.parse(localStorage.getItem('activities')) || [];
+    const savedImages = JSON.parse(localStorage.getItem('images')) || [];
+
+    setLocations(savedLocations);
+    setActivities(savedActivities);
+    setImages(savedImages);
+  }, []);
+
   return (
     <main>
         <div>
