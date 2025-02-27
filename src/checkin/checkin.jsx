@@ -26,7 +26,7 @@ export function Checkin() {
 
     //test functionality!!!!!!
 
-    navigate('/map'); 
+    navigate('/treasure'); 
   };
 
   return (
