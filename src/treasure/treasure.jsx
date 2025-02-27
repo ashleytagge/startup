@@ -5,12 +5,12 @@ import './treasure.css';
 export function Treasure() {
   //local storages
   const navigate = useNavigate();
-  const [image, setImage] = useState('mermaid.png'); // Placeholder image before api image generator
+  const [image, setImage] = useState('goldenpaddle.png'); // Placeholder image before api image generator
   const newpoints = JSON.parse(localStorage.getItem('newpoints')) || 100; //get newpoints and use 100 as a saftey net
 
   useEffect(() => {
     // create my api random image generator placeholder
-    const randomImage = 'mermaid.png'; 
+    const randomImage = 'goldenpaddle.png'; 
 
     // Get existing images list or initialize empty array to store images to display on treasure chest
     const images = JSON.parse(localStorage.getItem('images')) || [];
