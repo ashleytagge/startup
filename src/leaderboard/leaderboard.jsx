@@ -1,10 +1,51 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './leaderboard.css';
 
 export function Leaderboard() {
+
+  const [leaderboard, setLeaderboard] = useState([]);
+  const [friends, setFriends] = useState([]);
+  const [friendName, setFriendName] = useState('');
+
+  useEffect(() => {
+    const storedLeaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [];
+    const storedFriends = JSON.parse(localStorage.getItem('friends')) || [];
+    setLeaderboard(storedLeaderboard);
+    setFriends(storedFriends);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+    localStorage.setItem('friends', JSON.stringify(friends));
+  }, [leaderboard, friends]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    alert("Friend request sent!"); // You can replace this with your desired logic
+    
+    let randomScore = Math.floor(Math.random() * 10) + 1; 
+    const newScore = randomScore * 100;
+
+    const newFriend = {
+      name: friendName,
+      score: newScore, //Friends total points a random generated number for now to show implementation :)
+    };
+
+    //if they aren't already friends add friend. prevent duplicates.
+
+    if (!friends.includes(newFriend.name)) {
+      setFriends([...friends, newFriend.name]);
+
+      const newLeaderboard = [...leaderboard];
+      newLeaderboard.push(newFriend);
+      newLeaderboard.sort((a, b) => b.score - a.score); 
+
+      setLeaderboard(newLeaderboard);
+      alert("Friend added to leaderboard!");
+    } else {
+      alert("This person is already in your friends list.");
+    }
+
+    setFriendName('');
   };
 
   return (
