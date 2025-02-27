@@ -32,7 +32,8 @@ export function Map() {
 
     // Update state!
     setProgress(newProgress);
-    setPoints(newPoints);
+    setPoints(newTotalPoints);
+
 
     // Save updated progress and points to local storage
     localStorage.setItem('progress', newProgress);
