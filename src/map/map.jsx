@@ -39,6 +39,7 @@ export function Map() {
     localStorage.setItem('progress', newProgress);
     localStorage.setItem('points', newPoints);
     localStorage.setItem('newPoints', JSON.stringify(newPoints));
+    localStorage.setItem('newTotalPoints', newTotalPoints);
 
     // Navigate to the check-in page
     navigate('/checkin');
