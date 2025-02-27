@@ -6,7 +6,7 @@ export function Treasure() {
   //local storages
   const navigate = useNavigate();
   const [image, setImage] = useState('goldenpaddle.png'); // Placeholder image before api image generator
-  const newPoints = JSON.parse(localStorage.getItem('newPoints')) || 100; //get newpoints and use 100 as a saftey net
+  const newPoints = JSON.parse(localStorage.getItem('newPoints')) || 200; //get newpoints and use 100 as a saftey net
 
   useEffect(() => {
     // create my api random image generator placeholder
