@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { getCurrentUser } from '../login/login';
+import { getCurrentUserPoints } from '../map/map';
 import './leaderboard.css';
 
 export function Leaderboard() {
 
-  const [leaderboard, setLeaderboard] = useState([]);
+  const currentUser = getCurrentUser();
+  const currentUserPoints = getCurrentUserPoints();
+  const [leaderboard, setLeaderboard] = useState([
+    { name: currentUser, score: currentUserPoints }
+  ]);
   const [friends, setFriends] = useState([]);
   const [friendName, setFriendName] = useState('');
 
@@ -48,7 +54,7 @@ export function Leaderboard() {
           <h2>FRIENDS LEADERBOARD</h2>
           <h4>Badge Progress:</h4>
           <div style={{ paddingBottom: '10%' }}>
-            <progress value="80" max="100" style={{ width: '100%', height: '20px', appearance: 'none' }}>
+            <progress value="currentUserPoints" max="5000" style={{ width: '100%', height: '20px', appearance: 'none' }}>
               <span>60%</span>
             </progress>
           </div>
