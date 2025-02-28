@@ -37,9 +37,9 @@ export function Map() {
 
     // Save updated progress and points to local storage
     localStorage.setItem('progress', newProgress);
-    localStorage.setItem('points', newPoints);
+    localStorage.setItem('points', newTotalPoints);
     localStorage.setItem('newPoints', JSON.stringify(newPoints));
-    localStorage.setItem('currentUserPoints', newTotalPoints);
+    //localStorage.setItem('currentUserPoints', newTotalPoints);
 
     // Navigate to the check-in page
     navigate('/checkin');
@@ -66,4 +66,8 @@ export function Map() {
       <button onClick={handleCheckIn}>Check In</button> 
     </main>
   );
+}
+
+export function getCurrentUserPoints() {
+  return localStorage.getItem('points');
 }
