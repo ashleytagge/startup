@@ -153,5 +153,6 @@ progress::-moz-progress-bar {
     margin-top: -35px; 
   }
   #form-section label[for="add-friend"] {
+    padding-top: 200px;
     color: #333;
   }
