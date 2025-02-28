@@ -172,8 +172,11 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
-- [ ] **Hooks** - I did not complete this part of the deliverable.
+- [x] **All functionality implemented or mocked out** - I did not complete this part of the deliverable.
+    - This was so exciting! All functionality is implemented or mocked out. There are placeholders that allow you to interact with it as if it were calling an api or storing information in a database.
+    - If you're reading this go test it out! Some of my favorite feautures are adding friends and exploring the treasure box. You can add anybody as a friend right now and the program will assign them a random number of points to compare to yours on the leaderboard. The leaderboard will automatically update as you check in to more places! When you check in to a location on the map you will earn points, and get to enter where and what you were doing outside. Make sure to visit the treausure box after a couple of check ins because it keeps track of what you've been doing in order of when you did it!
+- [x] **Hooks** - I did not complete this part of the deliverable.
+    - I implemented useEffect and useState hooks to track points, the current username, and other user input across multiple webpages. For example, my map page calculates the number of points the user earns and that information is update using states. The state is updated when more points are earned. Then, I was able to access that data and display it on my leaderboard page.
 
 ## 🚀 Service deliverable
 
