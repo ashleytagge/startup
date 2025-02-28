@@ -14,6 +14,8 @@ export function Login() {
     const username = e.target['adventure-id'].value;
     const password = e.target['password'].value;
 
+    localStorage.setItem('currentUser', username);
+
     if (!users[username]) {
       // Automatically create an account they don't have one
       users[username] = { password, friends: [] };
@@ -22,8 +24,6 @@ export function Login() {
       alert('Incorrect password');
       return;
     }
-
-    localStorage.setItem('currentUser', username); 
 
     //reset local storage for a new user
     //this is temporary until we set up our databases. for now it will just help show functionality.
@@ -71,7 +71,7 @@ export function Login() {
 export function getCurrentUser() {
   return localStorage.getItem('currentUser');
 }
-
+/*
 // Add a friend by their username
 export function addFriend(friendUsername) {
   const currentUser = getCurrentUser();
@@ -81,4 +81,4 @@ export function addFriend(friendUsername) {
   } else {
     console.log('Friend not found or already added.');
   }
-}
+}*/
