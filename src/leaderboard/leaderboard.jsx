@@ -8,19 +8,6 @@ export function Leaderboard() {
   const [friendName, setFriendName] = useState('');
 
   useEffect(() => {
-
-    const currentUser = JSON.parse(localStorage.getItem('username')) || 'log in to view your points';
-    const currentUserPoints = JSON.parse(localStorage.getItem('newTotalPoints')) || 123;
-
-    const storedLeaderboard = JSON.parse(localStorage.getItem('leaderboard')) || [
-      { name: currentUser, score: currentUserPoints }, // Default with current user
-    ];
-    const storedFriends = JSON.parse(localStorage.getItem('friends')) || [];
-    setLeaderboard(storedLeaderboard);
-    setFriends(storedFriends);
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     localStorage.setItem('friends', JSON.stringify(friends));
   }, [leaderboard, friends]);
