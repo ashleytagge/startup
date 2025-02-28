@@ -71,14 +71,4 @@ export function Login() {
 export function getCurrentUser() {
   return localStorage.getItem('currentUser');
 }
-/*
-// Add a friend by their username
-export function addFriend(friendUsername) {
-  const currentUser = getCurrentUser();
-  if (users[friendUsername] && currentUser && !users[currentUser].friends.includes(friendUsername)) {
-    users[currentUser].friends.push(friendUsername);
-    console.log(`${friendUsername} added as a friend!`);
-  } else {
-    console.log('Friend not found or already added.');
-  }
-}*/
+
