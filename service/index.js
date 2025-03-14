@@ -116,6 +116,7 @@ async function createUser(email, password) {
     email: email,
     password: passwordHash,
     token: uuid.v4(),
+    score: 0,
     friends: [],
   };
   users.push(user);
@@ -137,6 +138,47 @@ function setAuthCookie(res, authToken) {
     sameSite: 'strict',
   });
 }
+
+apiRouter.post('/friends/add', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  const friendEmail = req.body.email;
+
+  if (user && friendEmail) {
+    const friend = await findUser('email', friendEmail);
+    if (friend && friend.email !== user.email) {
+      if (!user.friends.some(f => f.email === friend.email)) {
+        // Add your friend
+        const friendData = {
+          email: friend.email,
+          score: friend.score || 0  // this assumes your friend has a score, but
+                                    // if not will default to zero.
+        };
+        user.friends.push(friendData);
+        res.send({
+          msg: `You are now friends with ${friend.email}`,
+          friend: friendData
+        });
+      } else {
+        res.status(409).send(
+            {msg: 'Already friends'});  // prevents adding same friend again
+      }
+    } else {
+      res.status(404).send({msg: 'Friend not found'});
+    }
+  } else {
+    res.status(400).send({msg: 'Invalid request'});
+  }
+});
+
+apiRouter.get('/friends', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+  if (user) {
+    res.send({friends: user.friends});  // return your friends list!!!
+  } else {
+    res.status(401).send({msg: 'Unauthorized'});
+  }
+});
+
 
 app.listen(port, () => {
   console.log(`Listening on port ${port}`);
