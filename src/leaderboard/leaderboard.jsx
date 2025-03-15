@@ -18,6 +18,14 @@ export function Leaderboard() {
     localStorage.setItem('friends', JSON.stringify(friends));
   }, [leaderboard, friends]);
 
+  React.useEffect(() => {
+    fetch('/api/scores')
+      .then((response) => response.json())
+      .then((scores) => {
+        setScores(scores);
+      });
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     
