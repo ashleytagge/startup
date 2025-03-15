@@ -15,6 +15,12 @@ const port = process.argv.length > 2 ? process.argv[2] : 3000;
 // JSON body parsing
 app.use(express.json());
 
+// cookie parser middleware
+app.use(cookieParser());
+
+// serve static files
+app.use(express.static('public'));
+
 // router for service endpoints
 let apiRouter = express.Router();
 app.use(`/api`, apiRouter);
