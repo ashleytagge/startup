@@ -1,30 +1,46 @@
 import React, { useState, useEffect } from 'react';
-import { getCurrentUser } from '../login/login';
 import { getCurrentUserPoints } from '../map/map';
 import './leaderboard.css';
 
 export function Leaderboard() {
-
-  const currentUser = getCurrentUser();
-  const currentUserPoints = getCurrentUserPoints();
-  const [leaderboard, setLeaderboard] = useState([
-    { name: currentUser, score: currentUserPoints }
-  ]);
+  const [currentUser, setCurrentUser] = useState('');
+  const [leaderboard, setLeaderboard] = useState([]);
   const [friends, setFriends] = useState([]);
   const [friendName, setFriendName] = useState('');
+
+  async function fetchUser() {
+    try {
+      const res = await fetch('/api/user/me', {
+        method: 'GET',
+        credentials: 'include', // Ensures cookies (token) are sent
+      });
+
+      if (res.ok) {
+        const data = await res.json();
+        setCurrentUser(data.userid);
+      } else {
+        console.error('Failed to fetch user');
+      }
+    } catch (error) {
+      console.error('Error fetching user:', error);
+    }
+  }
+
+  useEffect(() => {
+    fetchUser();
+  }, []);
+
+  useEffect(() => {
+    if (currentUser) {
+      const currentUserPoints = getCurrentUserPoints();
+      setLeaderboard([{ name: currentUser, score: currentUserPoints }]);
+    }
+  }, [currentUser]);
 
   useEffect(() => {
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     localStorage.setItem('friends', JSON.stringify(friends));
   }, [leaderboard, friends]);
-
-  React.useEffect(() => {
-    fetch('/api/scores')
-      .then((response) => response.json())
-      .then((scores) => {
-        setScores(scores);
-      });
-  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,17 +50,14 @@ export function Leaderboard() {
 
     const newFriend = {
       name: friendName,
-      score: newScore, //Friends total points a random generated number for now to show implementation :)
+      score: newScore, 
     };
-
-    //if they aren't already friends add friend. prevent duplicates.
 
     if (!friends.includes(newFriend.name)) {
       setFriends([...friends, newFriend.name]);
 
-      const newLeaderboard = [...leaderboard];
-      newLeaderboard.push(newFriend);
-      newLeaderboard.sort((a, b) => b.score - a.score); 
+      const newLeaderboard = [...leaderboard, newFriend];
+      newLeaderboard.sort((a, b) => b.score - a.score);
 
       setLeaderboard(newLeaderboard);
       alert("Friend added to leaderboard!");
@@ -62,7 +75,7 @@ export function Leaderboard() {
           <h2>FRIENDS LEADERBOARD</h2>
           <h4>Badge Progress:</h4>
           <div style={{ paddingBottom: '10%' }}>
-            <progress value={currentUserPoints} max="2500" style={{ width: '100%', height: '20px', appearance: 'none' }}>
+            <progress value={getCurrentUserPoints()} max="2500" style={{ width: '100%', height: '20px', appearance: 'none' }}>
               <span>60%</span>
             </progress>
           </div>
@@ -106,7 +119,6 @@ export function Leaderboard() {
         </div>
       </div>
 
-      {/* Add Friend Form */}
       <div id="form-section">
         <form onSubmit={handleSubmit}>
           <label htmlFor="add-friend">Friend's ID:</label>

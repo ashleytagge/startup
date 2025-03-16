@@ -2,41 +2,33 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './login.css';
 
-// internal database for users
-const users = {};
-
 export function Login() {
   const navigate = useNavigate();
+  const [username, setUsername] = React.useState('');
+  const [password, setPassword] = React.useState('');
 
-  const handleSubmit = (e) => {
-    e.preventDefault(); // Prevent the default form from submitting an empty user
+  function handleLogin() {
+    createAuth('PUT');
+  }
 
-    const username = e.target['adventure-id'].value;
-    const password = e.target['password'].value;
+  function handleRegister() {
+    createAuth('POST');
+  }
 
-    localStorage.setItem('currentUser', username);
+  async function createAuth(method) {
+    const res = await fetch('/api/auth', {
+      method: method,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ userid: username, password }), // Fixed variable name
+    });
 
-    if (!users[username]) {
-      // Automatically create an account they don't have one
-      users[username] = { password, friends: [] };
-      console.log(`Account created for ${username}`);
-    } else if (users[username].password !== password) {
-      alert('Incorrect password');
-      return;
+    await res.json();
+    if (res.ok) {
+      navigate('/profile');
+    } else {
+      alert('Authentication failed');
     }
-
-    //reset local storage for a new user
-    //this is temporary until we set up our databases. for now it will just help show functionality.
-    localStorage.removeItem('locations');
-    localStorage.removeItem('activities');
-    localStorage.removeItem('images');
-    localStorage.removeItem('newPoints');
-    localStorage.removeItem('progress');
-    localStorage.removeItem('points');
-    localStorage.removeItem('friends');
-
-    navigate('/map'); // Navigate to map
-  };
+  }
 
   return (
     <main className="page-content">
@@ -49,26 +41,34 @@ export function Login() {
       </div>
 
       <div id="form-section">
-        <form onSubmit={handleSubmit}>
+        <form>
           <label htmlFor="adventure-id">Adventure ID:</label>
           <br />
-          <input type="text" id="adventure-id" name="adventure_id" placeholder="paddleboardgurrrl" required />
+          <input 
+            type="text" 
+            onChange={(e) => setUsername(e.target.value)} 
+            placeholder="paddleboardgurrrl" 
+            required 
+          />
           <br /><br />
           <label htmlFor="password">Password:</label>
           <br />
-          <input type="password" id="password" name="password" placeholder="***********" required />
+          <input 
+            type="password" 
+            onChange={(e) => setPassword(e.target.value)} 
+            placeholder="***********" 
+            required 
+          />
           <br /><br />
-          <button type="submit">Dive In</button>
+          <button type="button" disabled={!(username && password)} onClick={handleLogin}>
+            Dive In
+          </button>
           <br />
-          <p>If you're new, simply log in to create an account.</p>
+          <button type="button" disabled={!(username && password)} onClick={handleRegister}>
+            Sign up
+          </button>
         </form>
       </div>
     </main>
   );
 }
-
-// Access the current user and display the name on main game page
-export function getCurrentUser() {
-  return localStorage.getItem('currentUser');
-}
-

@@ -1,191 +1,116 @@
-const cookieParser = require('cookie-parser');
-const bcrypt = require('bcryptjs');
 const express = require('express');
-const uuid = require('uuid');
 const app = express();
+const cookieParser = require('cookie-parser');
+const uuid = require('uuid');
+const bcrypt = require('bcryptjs');
 
-const authCookieName = 'token';
-
-let users = [];
-let scores = [];
-let friends = [];
-
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
-
-// JSON body parsing
 app.use(express.json());
-
-// cookie parser middleware
 app.use(cookieParser());
 
-// serve static files
-app.use(express.static('public'));
-
-// router for service endpoints
-let apiRouter = express.Router();
-app.use(`/api`, apiRouter);
-
-// CreateAuth a new user
-apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('email', req.body.email)) {
+app.post('/api/auth', async (req, res) => {
+  if (await getUser('userid', req.body.userid)) {
     res.status(409).send({msg: 'Existing user'});
   } else {
-    const user = await createUser(req.body.email, req.body.password);
+    const user = await createUser(req.body.userid, req.body.password);
+    setAuthCookie(res, user);
 
-    setAuthCookie(res, user.token);
-    res.send({email: user.email});
+    res.send({userid: user.userid});
   }
 });
 
-// GetAuth login an existing user
-apiRouter.post('/auth/login', async (req, res) => {
-  const user = await findUser('email', req.body.email);
-  if (user) {
-    if (await bcrypt.compare(req.body.password, user.password)) {
-      user.token = uuid.v4();
-      setAuthCookie(res, user.token);
-      res.send({email: user.email});
-      return;
-    }
-  }
-  res.status(401).send({msg: 'Unauthorized'});
-});
+app.put('/api/auth', async (req, res) => {
+  const user = await getUser('userid', req.body.userid);
+  if (user && (await bcrypt.compare(req.body.password, user.password))) {
+    setAuthCookie(res, user);
 
-// DeleteAuth logout a user
-apiRouter.delete('/auth/logout', async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    delete user.token;
-  }
-  res.clearCookie(authCookieName);
-  res.status(204).end();
-});
-
-// Middleware to verify that the user is authorized to call an endpoint
-const verifyAuth = async (req, res, next) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    next();
+    res.send({userid: user.userid});
   } else {
     res.status(401).send({msg: 'Unauthorized'});
   }
-};
-
-// GetScores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
-  res.send(scores);
 });
 
-// SubmitScore
-apiRouter.post('/score', verifyAuth, (req, res) => {
-  scores = updateScores(req.body);
-  res.send(scores);
-});
-
-// Default error handler
-app.use(function(err, req, res, next) {
-  res.status(500).send({type: err.name, message: err.message});
-});
-
-// Return the application's default page if the path is unknown
-app.use((_req, res) => {
-  res.sendFile('index.html', {root: 'public'});
-});
-
-// SCORE AND HELPER FUNCTIONS
-//  updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore) {
-  let found = false;
-  for (const [i, prevScore] of scores.entries()) {
-    if (newScore.score > prevScore.score) {
-      scores.splice(i, 0, newScore);
-      found = true;
-      break;
-    }
+app.delete('/api/auth', async (req, res) => {
+  const token = req.cookies['token'];
+  const user = await getUser('token', token);
+  if (user) {
+    clearAuthCookie(res, user);
   }
 
-  if (!found) {
-    scores.push(newScore);
+  res.send({});
+});
+
+app.get('/api/user/me', async (req, res) => {
+  const token = req.cookies['token'];
+  const user = await getUser('token', token);
+  if (user) {
+    res.send({userid: user.userid});
+  } else {
+    res.status(401).send({msg: 'Unauthorized'});
   }
+});
 
-  if (scores.length > 10) {
-    scores.length = 10;
+app.get('/api/user/score', async (req, res) => {
+  const token = req.cookies['token'];
+  const user = await getUser('token', token);
+
+  if (user) {
+    res.send({score: user.score});
+  } else {
+    res.status(401).send({msg: 'Unauthorized'});
   }
+});
 
-  return scores;
-}
+app.put('/api/user/score', async (req, res) => {
+  const token = req.cookies['token'];
+  const user = await getUser('token', token);
 
-async function createUser(email, password) {
+  if (user) {
+    user.score = req.body.score;
+    res.send({score: user.score});
+  } else {
+    res.status(401).send({msg: 'Unauthorized'});
+  }
+});
+
+const users = [];
+
+async function createUser(userid, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
   const user = {
-    email: email,
+    userid: userid,
     password: passwordHash,
-    token: uuid.v4(),
     score: 0,
-    friends: [],
   };
+
   users.push(user);
 
   return user;
 }
 
-async function findUser(field, value) {
-  if (!value) return null;
-
-  return users.find((u) => u[field] === value);
+async function getUser(field, value) {
+  if (value) {
+    return users.find((user) => user[field] === value);
+  }
+  return null;
 }
 
-// setAuthCookie in the HTTP response
-function setAuthCookie(res, authToken) {
-  res.cookie(authCookieName, authToken, {
+function setAuthCookie(res, user) {
+  user.token = uuid.v4();
+
+  res.cookie('token', user.token, {
     secure: true,
     httpOnly: true,
     sameSite: 'strict',
   });
 }
 
-apiRouter.post('/friends/add', verifyAuth, async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  const friendEmail = req.body.email;
+function clearAuthCookie(res, user) {
+  delete user.token;
+  res.clearCookie('token');
+}
 
-  if (user && friendEmail) {
-    const friend = await findUser('email', friendEmail);
-    if (friend && friend.email !== user.email) {
-      if (!user.friends.some(f => f.email === friend.email)) {
-        // Add your friend
-        const friendData = {
-          email: friend.email,
-          score: friend.score || 0  // this assumes your friend has a score, but
-                                    // if not will default to zero.
-        };
-        user.friends.push(friendData);
-        res.send({
-          msg: `You are now friends with ${friend.email}`,
-          friend: friendData
-        });
-      } else {
-        res.status(409).send(
-            {msg: 'Already friends'});  // prevents adding same friend again
-      }
-    } else {
-      res.status(404).send({msg: 'Friend not found'});
-    }
-  } else {
-    res.status(400).send({msg: 'Invalid request'});
-  }
-});
-
-apiRouter.get('/friends', verifyAuth, async (req, res) => {
-  const user = await findUser('token', req.cookies[authCookieName]);
-  if (user) {
-    res.send({friends: user.friends});  // return your friends list!!!
-  } else {
-    res.status(401).send({msg: 'Unauthorized'});
-  }
-});
-
-
-app.listen(port, () => {
+const port = 3000;
+app.listen(port, function() {
   console.log(`Listening on port ${port}`);
 });
