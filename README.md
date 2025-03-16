@@ -183,11 +183,17 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **Node.js/Express HTTP service** - I did not complete this part of the deliverable.
+- [x] **Node.js/Express HTTP service** - I did complete this part of the deliverable.
 - [ ] **Static middleware for frontend** - I did not complete this part of the deliverable.
 - [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
 - [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
 - [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
+
+**Notes**
+- This deliverable has proven extra difficult for me. I think the biggest reason for that is the complexity of my webpage compared to my skills as a beginner. I can not figure out how to create the backend for adding friends and saving that friends list.
+- When I propsed my application at the beginning of the semester the TA commented that it would be okay to simplify in the future as long as I still meet all of the rubric requirements.
+- DECISION: I am going to simplify my webpage for my own sake. I am not going to implement a functioning friends list. However, I'm going to keep the local storage features I have for friends lists currently so the user can still interact with the leaderboard. The add friend button will generate a random score to compare with the user's real score on the leaderboard.
+- My API's will be implemented in log ins and keeping score.
 
 ## 🚀 DB/Login deliverable
 
