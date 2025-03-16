@@ -8,18 +8,6 @@ export function Map() {
   const [points, setPoints] = useState(0);
   const userName = localStorage.getItem('userName') || 'Guest';
 
-  useEffect(() => {
-    const savedProgress = localStorage.getItem('progress');
-    const savedPoints = localStorage.getItem('points');
-    
-    if (savedProgress !== null) {
-      setProgress(Number(savedProgress));
-    }
-    if (savedPoints !== null) {
-      setPoints(Number(savedPoints));
-    }
-  }, []);
-
   async function saveScore(score) {
     const newScore = { name: userName, score: score };
   
@@ -42,8 +30,10 @@ export function Map() {
 
     setProgress(newProgress);
     setPoints(newTotalPoints);
+    //I am keeping these local storage items intentially because this info is used to calculate the 
+    //users points which ARE stored in the backend. but I don't need the backend to remember how many points 
+    //they earned everysingle time or what step they are on at any given moment.
     localStorage.setItem('progress', newProgress);
-    localStorage.setItem('points', newTotalPoints);
     localStorage.setItem('newPoints', JSON.stringify(newPoints));
     
     await saveScore(newTotalPoints);
