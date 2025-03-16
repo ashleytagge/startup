@@ -6,65 +6,30 @@ export function Map() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [points, setPoints] = useState(0);
- /*const [username, setUsername] = useState('');
+  const userName = localStorage.getItem('userName') || 'Guest';
 
-  async function fetchUser() {
-    try {
-      const res = await fetch('/api/user/me', {
-        method: 'GET',
-        credentials: 'include', // Ensures cookies (token) are sent
-      });
-
-      if (res.ok) {
-        const data = await res.json();
-        setUsername(data.userid); // Set the username in state
-      } else {
-        console.error('Failed to fetch user');
-      }
-    } catch (error) {
-      console.error('Error fetching user:', error);
-    }
-  }
-
-    async function fetchScore() {
-    const res = await fetch('/api/user/score', {
-      method: 'GET',
-      credentials: 'include',
-    });
-  
-    const data = await res.json();
-    if (res.ok) {
-      console.log(`Current score: ${data.score}`);
-    } else {
-      alert(data.msg || 'Failed to fetch score');
-    }
-  }*/
-
-    useEffect(() => {
-      const savedProgress = localStorage.getItem('progress');
-      const savedPoints = localStorage.getItem('points');
-      
-      if (savedProgress !== null) {
-        setProgress(Number(savedProgress));
-      }
-      if (savedPoints !== null) {
-        setPoints(Number(savedPoints));
-      }
-    }, []);
-
-    async function updateScore(score) {
-      const res = await fetch('/api/user/score', {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        credentials: 'include', // Ensures cookies are sent with the request
-        body: JSON.stringify({ score }), // Using the passed score instead of getCurrentUserPoints()
-      });
+  useEffect(() => {
+    const savedProgress = localStorage.getItem('progress');
+    const savedPoints = localStorage.getItem('points');
     
-      const data = await res.json();
-      if (!res.ok) {
-        alert(data.msg || 'Failed to update score');
-      }
+    if (savedProgress !== null) {
+      setProgress(Number(savedProgress));
     }
+    if (savedPoints !== null) {
+      setPoints(Number(savedPoints));
+    }
+  }, []);
+
+  const saveScore = async (score) => {
+    const date = new Date().toLocaleDateString();
+    const newScore = { name: userName, score: score, date: date };
+    
+    await fetch('/api/score', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newScore),
+    });
+  };
 
   const handleCheckIn = async () => {
     let newProgress = progress + 1;
@@ -81,9 +46,7 @@ export function Map() {
     localStorage.setItem('points', newTotalPoints);
     localStorage.setItem('newPoints', JSON.stringify(newPoints));
     
-    fetchUser();
-    updateScore(newTotalPoints);
-
+    await saveScore(newTotalPoints);
     navigate('/checkin');
   };
 
@@ -109,5 +72,5 @@ export function Map() {
 }
 
 export function getCurrentUserPoints() {
-  return Number(localStorage.getItem('points'));
+  return localStorage.getItem('points');
 }
