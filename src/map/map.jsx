@@ -20,16 +20,16 @@ export function Map() {
     }
   }, []);
 
-  const saveScore = async (score) => {
-    const date = new Date().toLocaleDateString();
-    const newScore = { name: userName, score: score, date: date };
-    
+  async function saveScore(score) {
+    const newScore = { name: userName, score: score };
+  
     await fetch('/api/score', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'content-type': 'application/json' },
       body: JSON.stringify(newScore),
     });
-  };
+  
+  }
 
   const handleCheckIn = async () => {
     let newProgress = progress + 1;
