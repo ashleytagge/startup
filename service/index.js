@@ -31,9 +31,11 @@ app.use(`/api`, apiRouter);
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
   if (await findUser('username', req.body.username)) {
+    console.log(`User already exists: ${req.body.username}`);
     res.status(409).send({msg: 'Existing user'});
   } else {
     const user = await createUser(req.body.username, req.body.password);
+    console.log(`User created: ${user.username}`);
 
     setAuthCookie(res, user.token);
     res.send({username: user.username});
@@ -60,7 +62,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   if (user) {
     delete user.token;
   }
-  res.clearCookie(authCookieName);
+  res.clearCooki(authCookieName);
   res.status(204).end();
 });
 
@@ -73,6 +75,18 @@ const verifyAuth = async (req, res, next) => {
     res.status(401).send({msg: 'Unauthorized'});
   }
 };
+
+// Get current user info
+apiRouter.get('/user/me', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+
+  if (!user) {
+    return res.status(401).send({msg: 'Unauthorized'});
+  }
+
+  res.send(
+      {username: user.username, progress: user.progress, score: user.score});
+});
 
 // GetScores
 apiRouter.get('/scores', verifyAuth, (_req, res) => {
@@ -93,6 +107,21 @@ app.use(function(err, req, res, next) {
 // Return the application's default page if the path is unknown
 app.use((_req, res) => {
   res.sendFile('index.html', {root: 'public'});
+});
+
+// update user updates the current users points and progress after a check in
+apiRouter.post('/user/update', verifyAuth, async (req, res) => {
+  const user = await findUser('token', req.cookies[authCookieName]);
+
+  if (!user) {
+    return res.status(401).send({msg: 'Unauthorized'});
+  }
+
+  user.progress = req.body.progress;
+  user.score = req.body.score;
+
+  res.send(
+      {username: user.username, progress: user.progress, score: user.score});
 });
 
 // updateScores considers a new score for inclusion in the high scores.
@@ -117,6 +146,7 @@ function updateScores(newScore) {
   return scores;
 }
 
+
 async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
 
@@ -124,6 +154,8 @@ async function createUser(username, password) {
     username: username,
     password: passwordHash,
     token: uuid.v4(),
+    progress: 0,
+    score: 0,
   };
   users.push(user);
 
