@@ -1,0 +1,161 @@
+
+
+menu {
+    flex: 1;
+    display: flex;
+    flex-direction: row !important;
+    list-style: none;
+    gap: 15px;
+}
+
+h2 {
+    margin-top: 50px;
+    font-family: 'Impact';
+    font-size: 36px; /* Big and bold */
+    font-weight: 400;
+    color: #FFAC48; 
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    position: relative; 
+    z-index: 1;
+
+}
+
+h4 {
+    font-size: 15px;
+    color: #FFAC48;
+    padding-top: 10%;
+}
+
+table {
+    width: 100%;
+    max-width: 500px;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid #ccc;
+}
+
+th, td {
+    padding: 8px 12px;
+    text-align: center;
+    color: black;
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: flex-start; 
+    gap: 20px;
+}
+
+.leaderboard-section {
+    flex: 1;
+    margin-right: 20px; 
+    align-items: center;
+}
+
+.leaderboard-section table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.leaderboard-section th, .leaderboard-section td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+.leaderboard-section thead {
+    background-color: #f1f1f1;
+}
+
+.friends-list-section {
+    flex: 1;
+}
+
+.friends-list-section table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+}
+
+.friends-list-section thead{
+    background-color: #f1f1f1; /* Same as leaderboard header */
+    font-weight: bold; /* Optional if you want it to stand out */
+}
+
+.friends-list-section td {
+    border: 1px solid #ccc;
+    padding: 8px 12px;
+    text-align: left;
+}
+
+#add-friend-section {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#add-friend-section input {
+    border-radius: 20px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    width: 120px;
+}
+
+#add-friend-section button {
+    border-radius: 50px;
+    padding: 5px 15px;
+    font-size: 10px;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #f3f3f3; /* Light background */
+    border: 1px solid #ccc; /* Thin, light gray border */
+    border-radius: 5px; /* Optional */
+}
+  
+progress::-webkit-progress-value {
+    background-color: #FFAC48; /* Orange color for the progress */
+}
+  
+progress::-moz-progress-bar {
+    background-color: #FFAC48; 
+}
+
+.leaderboard-section,
+.friends-list-section {
+    width: 100%; /* Optional, or adjust width as needed */
+    max-width: 500px; /* Keeps tables from getting too wide */
+    margin: 0 auto; /* Center within the container */
+}
+#add-friend-button button {
+    padding: 5px 10px;
+    font-size: 12px;
+    height: auto;
+    border-radius: 20px;
+    background-color: #FFAC48;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  #add-friend-button button:hover {
+    background-color: #FF8C00;
+  }
+
+  #add-friend-button {
+    margin-top: -35px; 
+  }
+  #form-section label[for="add-friend"] {
+    padding-top: 200px;
+    color: #333;
+  }
