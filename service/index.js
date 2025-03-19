@@ -90,6 +90,8 @@ apiRouter.get('/user/me', verifyAuth, async (req, res) => {
     score: user.score,
     locations: user.locations || [],
     activities: user.activities || [],
+    images: user.images || [],
+    newpoints: user.newpoints,
   });
 });
 
@@ -126,6 +128,8 @@ apiRouter.post('/user/update', verifyAuth, async (req, res) => {
   user.score = req.body.score;
   user.locations = req.body.locations || user.locations;
   user.activities = req.body.activities || user.activities;
+  user.images = req.body.images || user.images;
+  user.newpoints = req.user.newpoints;
 
   res.send({
     username: user.username,
@@ -133,6 +137,8 @@ apiRouter.post('/user/update', verifyAuth, async (req, res) => {
     score: user.score,
     locations: user.locations,
     activities: user.activities,
+    images: user.images,
+    newpoints: user.newpoints,
   });
 });
 
@@ -170,6 +176,8 @@ async function createUser(username, password) {
     score: 0,
     locations: [],
     activities: [],
+    images: [],
+    newpoints: 0,
   };
   users.push(user);
 
