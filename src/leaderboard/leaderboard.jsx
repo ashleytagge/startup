@@ -13,6 +13,30 @@ export function Leaderboard() {
   const [friends, setFriends] = useState([]);
   const [friendName, setFriendName] = useState('');
 
+  // Fetch user data from the backend when the component loads
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch('/api/user/me', {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const user = await response.json();
+          setProgress(user.progress || 0);
+          setPoints(user.score || 0);
+        } else {
+          console.error('Failed to fetch user data');
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
+
   useEffect(() => {
     localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
     localStorage.setItem('friends', JSON.stringify(friends));

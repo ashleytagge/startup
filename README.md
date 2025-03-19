@@ -188,7 +188,8 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
     - use verifyAuth as a parameter to secure endpoints
     - it will stop the endpoint from running if the user isn't authenticated
 - [ ] **Calls to third party endpoints** - I did not complete this part of the deliverable.
-- [ ] **Backend service endpoints** - I did not complete this part of the deliverable.
+- [x] **Backend service endpoints** - I did not complete this part of the deliverable.
+    -finally I have finished them!
 - [ ] **Frontend calls service endpoints** - I did not complete this part of the deliverable.
 
 **Notes**

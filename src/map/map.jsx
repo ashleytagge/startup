@@ -7,6 +7,7 @@ export function Map() {
   const navigate = useNavigate();
   const [progress, setProgress] = useState(0);
   const [points, setPoints] = useState(0);
+  const [newpoints, setNewPoints] = useState(0);
 
   // Fetch user data from the backend when the component loads
   useEffect(() => {
@@ -47,13 +48,15 @@ export function Map() {
         method: 'POST',
         credentials: 'include',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ progress: newProgress, score: newTotalPoints }),
+        body: JSON.stringify({ progress: newProgress, score: newTotalPoints, newpoints: newPoints }),
       });
 
 
       if (response.ok) {
         setProgress(newProgress);
         setPoints(newTotalPoints);
+        setNewPoints(newPoints);
+        set
       } else {
         console.error('Failed to update user data');
       }

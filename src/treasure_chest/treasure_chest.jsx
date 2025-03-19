@@ -4,10 +4,38 @@ import './treasure_chest.css';
 
 export function TreasureChest() {
 
+  //declare local storage variables to support backend server
   const [locations, setLocations] = useState([]);
   const [activities, setActivities] = useState([]);
   const [images, setImages] = useState([]);
 
+  // Fetch user data from the backend when the component loads
+  //set location, activities, and images to what they are currently for each user
+  useEffect(() => {
+    async function fetchUserData() {
+      try {
+        const response = await fetch('/api/user/me', {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (response.ok) {
+          const user = await response.json();
+          setLocations(user.locations || "");
+          setActivities(user.activities || "");
+          setImages(user.images || "");
+        } else {
+          console.error('Failed to fetch user data');
+        }
+      } catch (error) {
+        console.error('Error fetching user data:', error);
+      }
+    }
+
+    fetchUserData();
+  }, []);
+
+  //can't remember what this section is doing. review from here down
   useEffect(() => {
     const savedLocations = JSON.parse(localStorage.getItem('locations')) || [];
     const savedActivities = JSON.parse(localStorage.getItem('activities')) || [];
@@ -18,7 +46,7 @@ export function TreasureChest() {
     setImages(savedImages);
   }, []);
 
-  if (images.length === 0) {
+  if (locations.length === 0) {
     return (
       <main>
         <div>
