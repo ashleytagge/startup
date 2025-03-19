@@ -84,8 +84,13 @@ apiRouter.get('/user/me', verifyAuth, async (req, res) => {
     return res.status(401).send({msg: 'Unauthorized'});
   }
 
-  res.send(
-      {username: user.username, progress: user.progress, score: user.score});
+  res.send({
+    username: user.username,
+    progress: user.progress,
+    score: user.score,
+    locations: user.locations || [],
+    activities: user.activities || [],
+  });
 });
 
 // GetScores
@@ -119,9 +124,16 @@ apiRouter.post('/user/update', verifyAuth, async (req, res) => {
 
   user.progress = req.body.progress;
   user.score = req.body.score;
+  user.locations = req.body.locations || user.locations;
+  user.activities = req.body.activities || user.activities;
 
-  res.send(
-      {username: user.username, progress: user.progress, score: user.score});
+  res.send({
+    username: user.username,
+    progress: user.progress,
+    score: user.score,
+    locations: user.locations,
+    activities: user.activities,
+  });
 });
 
 // updateScores considers a new score for inclusion in the high scores.
@@ -156,6 +168,8 @@ async function createUser(username, password) {
     token: uuid.v4(),
     progress: 0,
     score: 0,
+    locations: [],
+    activities: [],
   };
   users.push(user);
 

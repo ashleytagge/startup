@@ -50,6 +50,7 @@ export function Map() {
         body: JSON.stringify({ progress: newProgress, score: newTotalPoints }),
       });
 
+
       if (response.ok) {
         setProgress(newProgress);
         setPoints(newTotalPoints);
