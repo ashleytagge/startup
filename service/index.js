@@ -129,7 +129,7 @@ apiRouter.post('/user/update', verifyAuth, async (req, res) => {
   user.locations = req.body.locations || user.locations;
   user.activities = req.body.activities || user.activities;
   user.images = req.body.images || user.images;
-  user.newpoints = req.user.newpoints;
+  user.newpoints = req.body.newpoints || user.newpoints;
 
   res.send({
     username: user.username,
