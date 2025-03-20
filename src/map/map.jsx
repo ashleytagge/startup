@@ -22,6 +22,7 @@ export function Map() {
           const user = await response.json();
           setProgress(user.progress || 0);
           setPoints(user.score || 0);
+          setNewPoints(0);
         } else {
           console.error('Failed to fetch user data');
         }

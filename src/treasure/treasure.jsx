@@ -7,70 +7,62 @@ export function Treasure() {
   const navigate = useNavigate();
   const [image, setImage] = useState([]); 
   const [newPoints, setNewPoints] = useState(0);
+  const randomImage = 'goldenpaddle.png'; 
 
-  //update helper varaibles with backend data
-  useEffect(() => {
-    async function fetchUserData() {
-      try {
-        const response = await fetch('/api/user/me', {
-          method: 'GET',
-          credentials: 'include',
-        });
-
-        if (response.ok) {
-          const user = await response.json();
-          setNewPoints(user.newpoints);
-          setImage(user.images);
-          
-        } else {
-          console.error('Failed to fetch user data');
-        }
-      } catch (error) {
-        console.error('Error fetching user data:', error);
-      }
-    }
-
-    fetchUserData();
-  }, []);
-
-  //turn this into an update image array function? how do I do that? idk
-
-  useEffect(() => {
-    // create my api random image generator placeholder
-    const randomImage = 'goldenpaddle.png'; 
-
-    // Add the new marine image to the front of the list
-    image.push(randomImage);
-
-    // save the updated list to backend image
-    
-
-    // save updated list to local varable?? is this neccessary?? maybe delete later
-    setImage(randomImage);
-
-    /*try catch block for updating image array. needs to be inside of an async block
+  //put in an async function
   try {
-    const response = await fetch('/api/user/update', {
-      method: 'POST',
+    // Fetch the current user data from the backend
+    const response = await fetch('/api/user/me', {
+      method: 'GET',
       credentials: 'include',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ images: images}), //update images list in backend
     });
 
-
     if (response.ok) {
-      setProgress(newProgress);
-      setPoints(newTotalPoints);
-      setNewPoints(newPoints);
-      set
+      const user = await response.json(); // Parse the user data from the response
+
+      // Get existing locations and activities (from the backend data)
+      let updatedImages = user.images || [];
+      setNewPoints(user.newpoints);
+      // Add the new location and activity to the lists
+      updatedImages.push(randomImage);
+
+      // Update the user data on the backend (including the new location and activity)
+      const updateResponse = await fetch('/api/user/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({
+          locations: user.locations,
+          activities: user.activities,
+          progress: user.progress, // Keep the user's progress intact
+          score: user.score, // Keep the user's score intact
+          images: updatedImages,
+          newpoints: newPoints,
+        }),
+      });
+    }
+    updateUserData();
+
+//start reviewing from here down
+      if (updateResponse.ok) {
+        const updatedUser = await updateResponse.json(); // Parse updated user data
+        console.log('Updated user data:', updatedUser);
+
+        setNewPoints(user.newpoints);
+        setImage(user.images);
+
+      } else {
+        console.error('Failed to update user data');
+      }
     } else {
-      console.error('Failed to update user data');
+      console.error('Failed to fetch user data');
     }
   } catch (error) {
-    console.error('Error updating user:', error);
-  }*/
-
-  }, []);
+    console.error('Error submitting data:', error);
+  }
+};  
 
   return (
     

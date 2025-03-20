@@ -42,6 +42,7 @@ export function Checkin() {
             activities: updatedActivities,
             progress: user.progress, // Keep the user's progress intact
             score: user.score, // Keep the user's score intact
+            newpoints: user.newpoints,
           }),
         });
   
