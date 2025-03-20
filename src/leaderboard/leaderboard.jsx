@@ -6,7 +6,7 @@ import './leaderboard.css';
 export function Leaderboard() {
 
   const currentUser = getCurrentUser();
-  const currentUserPoints = getCurrentUserPoints();
+  const [currentUserPoints, setCurrentUserPoints] = useState(0);
   const [leaderboard, setLeaderboard] = useState([
     { name: currentUser, score: currentUserPoints }
   ]);
@@ -24,8 +24,7 @@ export function Leaderboard() {
 
         if (response.ok) {
           const user = await response.json();
-          setProgress(user.progress || 0);
-          setPoints(user.score || 0);
+          setCurrentUserPoints(user.score);
         } else {
           console.error('Failed to fetch user data');
         }
@@ -96,7 +95,7 @@ export function Leaderboard() {
                   <tr key={index}>
                     <td>{index + 1}</td>
                     <td>{user.name}</td>
-                    <td>{user.score}</td>
+                    <td>{currentUserPoints}</td>
                   </tr>
                 ))}
               </tbody>

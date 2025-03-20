@@ -5,8 +5,8 @@ import './treasure.css';
 export function Treasure() {
   const navigate = useNavigate();
   const [image, setImage] = useState([]); 
-  const [newPoints, setNewPoints] = useState(0);
-  const randomImage = 'goldenpaddle.png'; 
+  const [newPoints, setNewPoints] = useState(null);
+  const [randomImage, setRandomImage] = useState(null); // Store random image URL in state
 
   useEffect(() => {
     const updateUserData = async () => {
@@ -17,39 +17,50 @@ export function Treasure() {
           credentials: 'include',
         });
 
-        if (response.ok) {
-          const user = await response.json(); // Parse user data
+        if (!response.ok) throw new Error('Failed to fetch user data');
+        const user = await response.json();
 
-          // Get existing images or initialize empty array
-          let updatedImages = user.images || [];
-          setNewPoints(user.newpoints);
+        // Fetch a random image to get a new ID
+        const imageResponse = await fetch('https://picsum.photos/200');
+        const imageURL = imageResponse.url; // This will be a random image URL
 
-          // Add new image
-          updatedImages.push(randomImage);
-          setImage(updatedImages); // Update state with new image list
+        // Extract the image ID from the response headers
+        const imageID = imageResponse.headers.get('Picsum-ID');
 
-          // Update user data on the backend
-          await fetch('/api/user/update', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            credentials: 'include',
-            body: JSON.stringify({
-              locations: user.locations,
-              activities: user.activities,
-              progress: user.progress, 
-              score: user.score,
-              images: updatedImages,
-              newpoints: user.newpoints,
-            }),
-          });
-        }
+        // If we got an ID, construct a stable image URL
+        const stableImageURL = imageID 
+          ? `https://picsum.photos/id/${imageID}/200` 
+          : imageURL; // in case ID is missing
+
+        // Get existing images or initialize empty array
+        const updatedImages = [...(user.images || []), stableImageURL];
+
+        setNewPoints(user.newpoints);
+        setImage(updatedImages);
+        setRandomImage(stableImageURL); // Update state with new image
+
+        // Update user data on the backend
+        await fetch('/api/user/update', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include',
+          body: JSON.stringify({
+            locations: user.locations,
+            activities: user.activities,
+            progress: user.progress, 
+            score: user.score,
+            images: updatedImages,
+            newpoints: user.newpoints,
+          }),
+        });
+
       } catch (error) {
         console.error('Error updating user data:', error);
       }
     };
 
     updateUserData();
-  }, []); // Runs only once when the component mounts
+  }, []); 
 
   return (
     <main>
@@ -57,7 +68,11 @@ export function Treasure() {
         <div className="congrats"><h2>Congratulations!</h2></div>
         <div className="points"><p>+{newPoints} POINTS</p></div>
         <div className="image-container">
-          <img src={randomImage} alt="marine animal" width="200" />
+          {randomImage ? (
+            <img src={randomImage} alt="Randomly Generated" width="200" />
+          ) : (
+            <p>Loading image...</p>
+          )}
         </div>
         <div className="buttons-container">
           <button onClick={() => navigate('/treasurechest')}>Open Treasure Chest</button>
