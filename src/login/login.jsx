@@ -93,7 +93,8 @@ export function Login() {
           <input type="password" id="password" name="password" placeholder="***********" required />
           <br /><br />
           <button type="submit">Dive In</button>
-          <button type="button" onClick={handleRegister}>Register</button>
+          <br />
+          <button onClick={handleRegister}>Register</button>
         </form>
       </div>
     </main>

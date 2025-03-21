@@ -189,9 +189,10 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
     - it will stop the endpoint from running if the user isn't authenticated
 - [x] **Calls to third party endpoints** - I did complete this part of the deliverable.
     -my third part endpoints are in the treasure.js file. I can a random image generator to display an image when you earn points. It is honestly kind of random and takes a long time to load. You can find it by going to the mpa, checking in, and then it will be the next page that pops up that says congradulations! I wanted the images to be sea creatures but I couldn't find a free api that generated those specifically...so it is what it is for now. It works how I intended and meets the requirements. Hopefully I'll be able to spruce it up later.
-- [x] **Backend service endpoints** - I did not complete this part of the deliverable.
+- [x] **Backend service endpoints** - I did complete this part of the deliverable.
     -finally I have finished them!
 - [x] **Frontend calls service endpoints** - I did complete this part of the deliverable.
+    -all frontend calls are implemented and local storage is deleted! yay!
 
 **Notes**
 - This deliverable has proven extra difficult for me. I think the biggest reason for that is the complexity of my webpage compared to my skills as a beginner. I can not figure out how to create the backend for adding friends and saving that friends list.
