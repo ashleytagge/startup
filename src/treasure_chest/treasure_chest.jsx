@@ -35,7 +35,7 @@ export function TreasureChest() {
     fetchUserData();
   }, []);
 
-  //can't remember what this section is doing. review from here down
+  /*//can't remember what this section is doing. review from here down
   useEffect(() => {
     const savedLocations = JSON.parse(localStorage.getItem('locations')) || [];
     const savedActivities = JSON.parse(localStorage.getItem('activities')) || [];
@@ -44,7 +44,7 @@ export function TreasureChest() {
     setLocations(savedLocations);
     setActivities(savedActivities);
     setImages(savedImages);
-  }, []);
+  }, []);*/
 
   if (locations.length === 0) {
     return (

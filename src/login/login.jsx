@@ -104,7 +104,7 @@ export function getCurrentUser() {
   return localStorage.getItem('currentUser');
 }
 
-export async function logout() {
+/*export async function logout() {
   try {
     await fetch('/api/auth/logout', {
       method: 'DELETE',
@@ -114,4 +114,4 @@ export async function logout() {
   } catch (error) {
     console.error('Logout error:', error);
   }
-}
+*/

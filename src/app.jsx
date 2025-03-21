@@ -34,6 +34,9 @@ export default function App() {
         <li className="nav-item">
           <NavLink className='nav-link' to='treasureChest'>Treasure Chest</NavLink>
         </li>
+        <li className="nav-item">
+        <NavLink className='nav-link' to='login' onClick={logout}>Logout</NavLink>
+        </li>
       </menu>
     </nav>
   </header>
@@ -62,6 +65,28 @@ export default function App() {
 );
 }
 
+const clearLocalStorage = () => {
+  localStorage.removeItem('currentUser')
+  localStorage.removeItem('locations');
+  localStorage.removeItem('activities');
+  localStorage.removeItem('images');
+  localStorage.removeItem('newPoints');
+  localStorage.removeItem('progress');
+  localStorage.removeItem('points');
+  localStorage.removeItem('friends');
+};
+
+export async function logout() {
+  try {
+    await fetch('/api/auth/logout', {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+    clearLocalStorage();
+  } catch (error) {
+    console.error('Logout error:', error);
+  }
+}
 
 function NotFound() {
   return <main className='container-fluid bg-secondary text-center'>404: Return to sender. Address unknown.</main>;
