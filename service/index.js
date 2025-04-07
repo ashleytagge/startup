@@ -3,28 +3,6 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
-const {MongoClient} = require('mongodb');
-const config = require('./dbConfig.json');
-const url =
-    `mongodb+srv://${config.userName}:${config.password}@${config.hostname}`;
-const client = new MongoClient(url);
-
-let db, users_collection;
-
-async function connectMongoDB() {
-  try {
-    await client.connect();
-    db = client.db('aquaquest');
-    users_collection = db.collection('users');
-    console.log('Connected to MongoDB');
-  } catch (error) {
-    console.error(`Failed to connect to MongoDB: ${error.message}`);
-    process.exit(1);
-  }
-}
-
-connectMongoDB();  // Call it once during app startup
-
 
 const authCookieName = 'token';
 
@@ -52,9 +30,7 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  const existingUser =
-      await users_collection.findOne({username: req.body.username});
-  if (existingUser) {
+  if (await findUser('username', req.body.username)) {
     console.log(`User already exists: ${req.body.username}`);
     res.status(409).send({msg: 'Existing user'});
   } else {
@@ -68,13 +44,10 @@ apiRouter.post('/auth/create', async (req, res) => {
 
 // GetAuth login an existing user
 apiRouter.post('/auth/login', async (req, res) => {
-  const user = await users_collection.findOne({username: req.body.username});
+  const user = await findUser('username', req.body.username);
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
-      await users_collection.updateOne(
-          {_id: user._id},
-          {$set: {token: user.token}});  // Update the token in MongoDB
       setAuthCookie(res, user.token);
       res.send({username: user.username});
       return;
@@ -85,14 +58,11 @@ apiRouter.post('/auth/login', async (req, res) => {
 
 // DeleteAuth logout a user
 apiRouter.delete('/auth/logout', async (req, res) => {
-  const user =
-      await users_collection.findOne({token: req.cookies[authCookieName]});
+  const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
-    await users_collection.updateOne(
-        {_id: user._id},
-        {$unset: {token: ''}});  // Remove the token from MongoDB
+    delete user.token;
   }
-  res.clearCookie(authCookieName);
+  res.clearCooki(authCookieName);
   res.status(204).end();
 });
 
@@ -209,14 +179,15 @@ async function createUser(username, password) {
     images: [],
     newpoints: 0,
   };
-  await users_collection.insertOne(user);
+  users.push(user);
 
   return user;
 }
 
 async function findUser(field, value) {
   if (!value) return null;
-  return await users_collection.findOne({[field]: value});
+
+  return users.find((u) => u[field] === value);
 }
 
 // setAuthCookie in the HTTP response
