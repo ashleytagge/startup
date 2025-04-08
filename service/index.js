@@ -32,20 +32,28 @@ app.use(`/api`, apiRouter);
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
   try {
-    const existingUser = await getUser(req.body.username);
+    console.log('Request Body:', req.body);  // Debug log for request body
+
+    const existingUser =
+        await getUser(req.body.username);  // Check if the user already exists
+
     if (existingUser) {
       console.log(`User already exists: ${req.body.username}`);
-      res.status(409).send({msg: 'Existing user'});
-    } else {
-      const user = await createUser(req.body.username, req.body.password);
-      console.log(`User created: ${user.username}`);
-
-      setAuthCookie(res, user.token);
-      res.send({username: user.username});
+      return res.status(409).send({msg: 'Existing user'});
     }
+
+    const newUser = await createUser(
+        req.body.username, req.body.password);  // Create a new user
+    console.log(`User created: ${newUser.username}`);
+
+    // Set the authentication cookie
+    setAuthCookie(res, newUser.token);
+    res.send({username: newUser.username});
   } catch (error) {
-    console.error('Error creating user:', error);
-    res.status(500).send({msg: 'Internal server error'});
+    console.error(
+        'Error creating user:',
+        error.stack);  // Log stack trace for more details
+    res.status(500).send({msg: 'Internal server error', error: error.message});
   }
 });
 
@@ -193,6 +201,14 @@ async function createUser(username, password) {
   };
   // users.push(user);
   await DB.addUser(user);
+
+  try {
+    const result = await DB.addUser(user);
+    console.log('User added to database:', result);  // Log the result
+  } catch (error) {
+    console.error('Error adding user to database:', error);
+    throw error;
+  }
 
   return user;
 }
