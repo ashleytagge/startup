@@ -6,9 +6,8 @@ const url =
 const startup = new MongoClient(url);
 const db = startup.db('aquaquest');
 const userCollection = db.collection('user');
-const scoreCollection = db.collection('score');
+const scoreCollection = db.collection('scores');
 
-// This will asynchronously test the connection and exit the process if it fails
 (async function testConnection() {
   try {
     await db.command({ping: 1});
@@ -24,6 +23,10 @@ function getUser(username) {
   return userCollection.findOne({username: username});
 }
 
+async function updateUser(user) {
+  await userCollection.updateOne({username: user.username}, {$set: user});
+}
+
 function getUserByToken(token) {
   return userCollection.findOne({token: token});
 }
@@ -32,15 +35,11 @@ async function addUser(user) {
   await userCollection.insertOne(user);
 }
 
-async function updateUser(user) {
-  await userCollection.updateOne({email: user.email}, {$set: user});
-}
-
 async function addScore(score) {
   return scoreCollection.insertOne(score);
 }
 
-function getHighScores() {
+function getScores() {
   const query = {score: {$gt: 0, $lt: 900}};
   const options = {
     sort: {score: -1},
@@ -51,10 +50,13 @@ function getHighScores() {
 }
 
 module.exports = {
+  startup,
+  db,
+  userCollection,
   getUser,
   getUserByToken,
   addUser,
   updateUser,
   addScore,
-  getHighScores,
+  getScores,
 };

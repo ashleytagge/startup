@@ -3,6 +3,7 @@ const bcrypt = require('bcryptjs');
 const express = require('express');
 const uuid = require('uuid');
 const app = express();
+const DB = require('./database.js');
 
 const authCookieName = 'token';
 
@@ -13,7 +14,7 @@ let scores = [];
 
 // The service port. In production the front-end code is statically hosted by
 // the service on the same port.
-const port = process.argv.length > 2 ? process.argv[2] : 3000;
+const port = process.argv.length > 2 ? process.argv[2] : 4000;
 
 // JSON body parsing using built-in middleware
 app.use(express.json());
@@ -30,15 +31,21 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
-  if (await findUser('username', req.body.username)) {
-    console.log(`User already exists: ${req.body.username}`);
-    res.status(409).send({msg: 'Existing user'});
-  } else {
-    const user = await createUser(req.body.username, req.body.password);
-    console.log(`User created: ${user.username}`);
+  try {
+    const existingUser = await getUser(req.body.username);
+    if (existingUser) {
+      console.log(`User already exists: ${req.body.username}`);
+      res.status(409).send({msg: 'Existing user'});
+    } else {
+      const user = await createUser(req.body.username, req.body.password);
+      console.log(`User created: ${user.username}`);
 
-    setAuthCookie(res, user.token);
-    res.send({username: user.username});
+      setAuthCookie(res, user.token);
+      res.send({username: user.username});
+    }
+  } catch (error) {
+    console.error('Error creating user:', error);
+    res.status(500).send({msg: 'Internal server error'});
   }
 });
 
@@ -48,6 +55,7 @@ apiRouter.post('/auth/login', async (req, res) => {
   if (user) {
     if (await bcrypt.compare(req.body.password, user.password)) {
       user.token = uuid.v4();
+      await DB.updateUser(user);
       setAuthCookie(res, user.token);
       res.send({username: user.username});
       return;
@@ -61,6 +69,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
   const user = await findUser('token', req.cookies[authCookieName]);
   if (user) {
     delete user.token;
+    await DB.updateUser(user);
   }
   res.clearCooki(authCookieName);
   res.status(204).end();
@@ -96,7 +105,8 @@ apiRouter.get('/user/me', verifyAuth, async (req, res) => {
 });
 
 // GetScores
-apiRouter.get('/scores', verifyAuth, (_req, res) => {
+apiRouter.get('/scores', verifyAuth, async (_req, res) => {
+  const scores = await DB.getScores();
   res.send(scores);
 });
 
@@ -131,6 +141,8 @@ apiRouter.post('/user/update', verifyAuth, async (req, res) => {
   user.images = req.body.images || user.images;
   user.newpoints = req.body.newpoints || user.newpoints;
 
+  await DB.updateUser(user);
+
   res.send({
     username: user.username,
     progress: user.progress,
@@ -143,7 +155,7 @@ apiRouter.post('/user/update', verifyAuth, async (req, res) => {
 });
 
 // updateScores considers a new score for inclusion in the high scores.
-function updateScores(newScore) {
+async function updateScores(newScore) {
   let found = false;
   for (const [i, prevScore] of scores.entries()) {
     if (newScore.score > prevScore.score) {
@@ -154,16 +166,16 @@ function updateScores(newScore) {
   }
 
   if (!found) {
-    scores.push(newScore);
+    // scores.push(newScore);
+    await DB.addScore(newScore)
   }
 
   if (scores.length > 10) {
     scores.length = 10;
   }
 
-  return scores;
+  return DB.getScores();
 }
-
 
 async function createUser(username, password) {
   const passwordHash = await bcrypt.hash(password, 10);
@@ -179,7 +191,8 @@ async function createUser(username, password) {
     images: [],
     newpoints: 0,
   };
-  users.push(user);
+  // users.push(user);
+  await DB.addUser(user);
 
   return user;
 }
@@ -187,7 +200,11 @@ async function createUser(username, password) {
 async function findUser(field, value) {
   if (!value) return null;
 
-  return users.find((u) => u[field] === value);
+  // return users.find((u) => u[field] === value);
+  if (field === 'token') {
+    return DB.getUserByToken(value);
+  }
+  return DB.getUser(value);
 }
 
 // setAuthCookie in the HTTP response
