@@ -31,6 +31,7 @@ app.use(`/api`, apiRouter);
 
 // CreateAuth a new user
 apiRouter.post('/auth/create', async (req, res) => {
+  console.log('POST /auth/create route hit');
   try {
     console.log('Request Body:', req.body);  // Debug log for request body
 
@@ -79,7 +80,7 @@ apiRouter.delete('/auth/logout', async (req, res) => {
     delete user.token;
     await DB.updateUser(user);
   }
-  res.clearCooki(authCookieName);
+  res.clearCookie(authCookieName);
   res.status(204).end();
 });
 
