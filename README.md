@@ -204,11 +204,15 @@ For this deliverable I did the following. I checked the box `[x]` and added a de
 
 For this deliverable I did the following. I checked the box `[x]` and added a description for things I completed.
 
-- [ ] **User registration** - I did not complete this part of the deliverable.
-- [ ] **User login and logout** - I did not complete this part of the deliverable.
-- [ ] **Stores data in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
-- [ ] **Restricts functionality based on authentication** - I did not complete this part of the deliverable.
+- [ x] **User registration** - I did complete this part of the deliverable.
+    -completed adding my user registrations DB Code
+- [x] **User login and logout** - I did complete this part of the deliverable.
+    -I competed adding my user login and logouts
+- [x] **Stores data in MongoDB** - I did complete this part of the deliverable.
+    -My application succesfully connects to MongoDB everytime the server starts woo hoo
+    -BUT this is the ONE PART that i can not for the life of me figure out. I've tested the front end and the back end and I really have hit a wall here. But everything about my MongoDB is working. My program connects perfectly and should be storing the information there. I met with a TA about it before the due date last week and it didn't get me any farther. I am at a stand still right now because I've done everything to catch these errors but they are ninjas. I have so many console logs in my index.js and database.js files and even THEN my program runs with no logs. But something is up.
+- [x] **Stores credentials in MongoDB** - I did not complete this part of the deliverable.
+- [x] **Restricts functionality based on authentication** - I did complete this part of the deliverable.
 
 ## 🚀 WebSocket deliverable
 
