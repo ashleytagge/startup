@@ -201,7 +201,7 @@ async function createUser(username, password) {
     newpoints: 0,
   };
   // users.push(user);
-  await DB.addUser(user);
+  // await DB.addUser(user);
 
   try {
     const result = await DB.addUser(user);
